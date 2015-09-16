@@ -1,0 +1,588 @@
+<!-- P/wed
+age Content -->
+<style>
+	.tbl-chng-lbl{
+	text-decoration:underline;
+	color:#30AD23;
+}
+ .tbl-view-lbl{
+        text-decoration:underline;
+        color:#30AD23;
+	margin-left:2px;
+}
+
+</style>
+  <div id="graphsection">
+      <!-- <div class="row" style="margin-top:40px;">
+          
+          <div class = "col-md-6" id="menu-toggle" ng-click ="sidebar_toggle()">
+            <span class="cstmspan"></span>
+            <span class="whtecstmspan"></span>
+            <span class="cstmspan"></span>
+            <span class="whtecstmspan"></span>
+            <span class="cstmspan"></span>
+          </div>
+            <div class = "col-md-3" >
+            
+          </div>
+           <div class = "col-md-3" >
+            <img src="/static/lib/img/mindtree.png">
+          </div>
+      </div> -->
+      <div class="row " style="margin-top:30px;">
+      <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <label>Select Building:</label>
+            <!--<select  class="form-control select-menu" ng-model="buildingselectedValue" ng-options="val for val in getBuildingMapData()" ng-change="clearMappingOnBuilding(buildingselectedValue)" id="buildingMapId"  style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">Select</option>                
+            </select>-->
+	    <select  class="form-control select-menu" ng-model="buildingselectedValue" ng-options="val for val in getFuncControlMapData('Thermostat')" ng-change="clearMappingOnBuilding(buildingselectedValue)" id="buildingMapId"  style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">Select</option>                
+            </select>
+        </div>                
+        <div class="col-md-2">
+            <label>Select Fllor</label>
+            <select class="form-control" ng-model="floorselectedValue"  ng-options="val for val in getFloorMapData()" ng-change="clearMappingOnFloor(floorselectedValue)" id="floorMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">Select</option>      
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label>Select wing</label>
+            <select class="form-control" ng-model="wingselectedValue" ng-change = "clearMappingOnWing(wingselectedValue)" ng-options = "val for val in getWingMapData()" id="wingMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">Select</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+	 <label>Select input format</label>
+<!--            <select class="form-control" ng-model = "deviceselectedValue" ng-change = "clearMappingOnDevice(deviceseletedValue)"  ng-options = "val for val in getDeviceMapData()" id="deviceMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">Select</option>
+            </select>-->
+				<select class="form-control" id="setpoint_main_tblview" style="border-color:#6eb344;background-color:#f3f3f3;margin-left:5px;">
+				<option value="0">Select</option>
+				<option value="1">Monday</option>
+				<option value="2">Tuesday</option>
+				<option value="3">Wednesday</option>
+				<option value="4">Thursday</option>
+				<option value = "5">Friday</option>
+				<option value="6">Saturday</option>
+				<option value = "7">Sunday</option>
+				<option value="8">National Holiday </option>
+				<option value="9">custom holiday</option>
+
+
+				
+	
+			</select>
+
+	</div>
+	<div class="col-md-2">
+		<label></label>
+		<button type="button" class="btn btn-success" id="meter_go_btn" style="display:block;margin:0;margin-top:10px; auto;">Submit</button>
+	</div>
+
+      </div>
+     <!-- <div style="margin-top:30px;"></div>
+          <button type="button" class="btn btn-success" id="meter_go_btn" style="display:block;margin:0 auto;">Submit</button>
+  -->
+ <div style="margin-top:30px;"></div>
+<table class="table table-bordered" id="setpointtable"> 
+	<thead style="background-color:#75db1b;">
+		<th style="color:#11772d;font-weight:bold;">time-from</th>
+		<th style="color:#11772d;">time-to</th>
+		<th style="color:#11772d;">High set point</th>
+		<th style="color:#11772d;">Low set point</th>
+		<th style="color:#11772d;">Ac's</th>
+		<th style="color:#11772d;">Action</th>
+		</thead>
+	<tbody>
+		<tr>
+			<td class="timefrom1">9:15A.m</td>
+			<td class="timeto1">09:30A.M</td>
+			<td class="hightsetpoint1">22</td>
+			<td class="lowsetpoint1">21</td>
+			<td><!-- #tableviewlabel -->
+				<label class="tbl-chng-lbl" data-toggle="modal" data-target="#myModal">change</label>/<label class="tbl-view-lbl" id="1" data-toggle="modal" data-target="#tableviewlabel">view</label>
+				<select style="display:none;" class="aclist1" id="tbl-view-lbl1">
+					<option>Ac1</option>
+					<option>Ac2</option>
+					<option>Ac3</option>
+					<option>Ac4</option>
+				</select>
+			</td>
+			<td><input type="checkbox"/></td>
+			</tr>
+		<tr>
+                        <td class="timefrom2">10:00A.M</td>
+                        <td class="timeto2">11:00A.M</td>
+                        <td class="hightsetpoint2">23</td>
+                        <td class="lowsetpoint2">20</td>
+			<td>
+				<label class="tbl-chng-lbl" data-toggle="modal" data-target="#myModal">change</label>/<label class="tbl-view-lbl" id="2" data-toggle="modal" data-target="#tableviewlabel" >view</label>
+			<select style="display:none;" class="aclist2"  id="tbl-view-lbl2">
+                                        <option>Ac21</option>
+                                        <option>Ac22</option>
+                                        <option>Ac23</option>
+                                        <option>Ac24</option>
+                                </select>
+
+			</td>
+                        <td><input type="checkbox"/></td>
+
+                </tr>
+		<tr>
+                        <td class="timefrom3">12:30P.M</td>
+                        <td class="timeto3">04:00P.M</td>
+                        <td class="hightsetpoint3">27</td>
+                        <td class="lowsetpoint3">22</td>
+			<td>
+					<label class="tbl-chng-lbl" data-toggle="modal" data-target="#myModal">change</label>/<label class="tbl-view-lbl" id="3" data-toggle="modal" data-target="#tableviewlabel">view</label>
+					<select style="display:none;" class="aclist3"  id="tbl-view-lbl3">
+                                        <option>Ac31</option>
+                                        <option>Ac32</option>
+                                        <option>Ac33</option>
+                                        <option>Ac34</option>
+                                </select>
+
+			</td>
+                        <td><input type="checkbox"/></td>
+                </tr>
+
+	</tbody>
+	
+</table>
+<div style="float:left;">
+	<button type="button" class="btn btn-success" id="addcalendar" data-toggle="modal" data-target="#editCalendarModal">Edit Calendar</button>
+</div>
+<div style="float:right">
+	<button type="button" class="btn btn-success" id="submitsetpoints" ng-click="callSetpointService()">Submit</button>
+<!--	<button type="button" class="btn btn-success" id="addsetpoints">Add</button>-->
+	<button type="button" class="btn btn-success" id="addsetpoints"  data-toggle="modal" data-target="#myModal"> Add</button>
+	<button type="button" class="btn btn-success" id="editsetpoints" > Edit</button>
+	<button type="button" class="btn btn-success" id="removesetpoints">Delete</button>
+</div>
+<div style="clear:both;">
+</div>
+<button type="button" class="btn btn-success" id="editsetpoints" ng-click = "add_ele_to_occupancy_section()">Occupancy Based Control</button>
+	      <div class="row " style="margin-top:30px;">
+      <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <label>Select Building:</label>
+            <select  class="form-control select-menu" ng-model="group_buildingselectedValue" ng-options="val for val in getFuncControlMapData('Thermostat')" ng-change="clearMappingOnBuilding(group_buildingselectedValue)" id="group_buildingMapId"  style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">All</option>    
+            </select>
+        </div>                
+        <div class="col-md-2">
+            <label>Select Fllor</label>
+            <select class="form-control" ng-model="group_floorselectedValue"  ng-options="val for val in getFloorMapData()" ng-change="clearMappingOnFloor(group_floorselectedValue)" id="group_floorMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">All</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label>Select wing</label>
+            <select class="form-control" ng-model="group_wingselectedValue" ng-change = "clearMappingOnWing(group_wingselectedValue)" ng-options = "val for val in getWingMapData()" id="group_wingMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">All</option>
+            </select>
+        </div>
+</div>
+
+<button type  "button" class="btn btn-success" id="add_group" ng-click = "defineGrouping()">Add group</button>
+
+<div id="occupancy_section"></div>
+
+<!--
+<div style="top:30%;left:30%;">
+    <input class="form-control" type="text" id="highsetpoint" placeholder = "highsetpoint">
+     <input class="form-control" type="text" id="lowsetpoint" placeholder = "lowsetpoint">
+      <input class="form-control" type="text" id="mac_id" placeholder = "mac_id">
+      <input class="form-control" type="text" id="ac_no" placeholder = "ac_no">
+      <button type="button" class="btn btn-primary" id="thermostat_submit">Submit</button>
+</div>
+-->
+
+     <div style="background-color:red;">
+      </div>   
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#9cff88;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="color:#11772d;" >Calendar based set points</h4>
+      </div>
+      <div class="modal-body">
+		<form  id="change-acmodal_body">
+	
+	<!--<form class="form-inline">
+  		<div class="form-group">
+    			<label for="exampleInputName2">Select device:</label>
+	            <select class="form-control" ng-model = "deviceselectedValue" ng-change = "clearMappingOnDevice(deviceseletedValue)"  ng-options = "val for val in getDeviceMapData()" id="deviceMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+             		 <option value="">Select</option>
+        	    </select>
+
+		 </div>
+		<div class="checkbox">
+		    <label>
+		      <input type="checkbox"> Check me out
+		    </label>
+	        </div>
+		<br/>
+		<div class="checkbox">
+		    <label>
+		      <input type="checkbox"> Check me out
+		    </label>
+	        </div>
+
+	</form>-->
+
+        <!--<div class="row">
+		<div class="col-md-2">
+			< style="form-control">Select input format</label>
+		</div>
+		<div class="col-md-2">
+			<select class="form-control" style="border-color:#6eb344;background-color:#f3f3f3;">
+				<option>Select</option>
+				<option>Monday</option>
+				<option>Tuesday</option>
+				<option>Wednesday</option>
+				<option>Thursay</option>
+				<option>Friday</option>
+				<option>Saturday</option>
+				<option>sunday</option>
+				<option>National Holiday </option>
+				<option>custom holiday</option>
+
+
+				
+	
+			</select>
+		</div>
+	</div>-->
+	</form>
+	
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id="edit_aclist_cboxes" ng-click = "define_cboxstatus_for_table()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--AC's view  Modal -->
+<div class="modal fade" id="tableviewlabel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#9cff88;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="color:#11772d;">change A.C</h4>
+      </div>
+      <div class="modal-body">
+       		<!--<form class="form-inline">
+                <div class="form-group">
+                        <label for="exampleInputName2">Select input format:</label>
+                        <select class="form-control" id="viewacselectid" style="border-color:#6eb344;background-color:#f3f3f3;margin-left:5px;">
+                                
+                        </select>
+
+                 </div>
+	        </form>-->
+		<form id="selected_acmodal_body">
+		</form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Edit Calendar Moal --->
+<div class="modal fade" id="editCalendarModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#9cff88;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="color:#11772d;">Edit Calendar</h4>
+      </div>
+      <div class="modal-body">
+                <form>
+<!--                <div class="form-group">-->
+		    <div class="row">
+			<div class="col-md-3">
+	                        <label for="exampleInputName2">Select day:</label>
+        	                <select class="form-control" id="day_edit_cal" style="border-color:#6eb344;background-color:#f3f3f3;margin-left:5px;">
+					<option value = "0">Select</option>
+					<option value = "1">Monday</option>
+					<option value = "2">Tuesday</option>
+					<option value = "3">Wednesday</option>
+					<option value = "4">Thursday</option>
+					<option value = "5">Friday</option>
+					<option value = "6">Saturday</option>
+					<option value = "7">Sunday</option>
+					<option value = "8">National Holiday</option>
+					<option value = "9">Restricted Holiday</option>
+	                        </select>
+			</div>
+                </div>
+		<br/>
+		<br/>
+<!--		<div class="form-group">-->
+			<div class="row">
+				<div class="col-md-3">
+					<label>Select Date from:</label>
+					<select  class="form-control" ng-model="selected_date_from" ng-options="val for val in getCalendarDateFrom()"  id="timefrom_edit_cal"  style="border-color:#6eb344;background-color:#f3f3f3;">
+                		              <option value="">Select</option>
+                        		 </select>
+				</div>
+				<div class="col-md-3">
+					<label>Select Date to:</label>
+					 <select  class="form-control" ng-model="selected_date_to" ng-options="val for val in getCalendarDateTo()"  id="timeto_edit_cal"  style="border-color:#6eb344;background-color:#f3f3f3;">
+                		              <option value="">Select</option>
+                        		 </select>
+				</div>
+			</div>
+	<!--	</div>	-->
+		<br/>
+		<br/>
+		<div class="row">
+			<div class="col-md-3">
+				<label>High Set Point:</label>
+				<input type="text" placeholder = "high set point" id="hsp_edit_cal" class="form-control" style="border-color:#6eb344;background-color:#f3f3f3;margin-left:5px;">
+			</div>
+			<div class="col-md-3">
+				<label>Low Set Point:</label>
+				<input type="text" placeholder = "low set point" id="lsp_edit_cal" class="form-control" style="border-color:#6eb344;background-color:#f3f3f3;margin-left:5px;">
+			</div>
+			<div class="col-md-3">
+				<button type="button" id="edit_modal_addbtn" class="btn btn-success" style="display:block;margin:0;margin-top:10px; auto;">Add</button> 
+			</div>
+		</div>
+		
+        </form>
+	<br/>
+	<br/>
+	<table class="table table-bordered" id="editcalendar_modal_setpointtable">
+	        <thead style="background-color:#75db1b;" id="editcalendar_modal_setpointhead">
+        	        <th style="color:#11772d;">time-from</th>
+                	<th style="color:#11772d;">time-to</th>
+	                <th style="color:#11772d;">High set point</th>
+        	        <th style="color:#11772d;">Low set point</th>
+	                <th style="color:#11772d;">Action</th>
+        	        </thead>
+	        <tbody id="editcalenndar_modal_setpointbody">
+	
+		</tbody>
+	</table>
+	<div class="row">
+		<div class="col-md-2">
+                        
+                </div>
+
+	</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id="edit_cal_savechanges" ng-click="test()"> Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  </div>
+
+<script>
+	if(screen_width > 1000){
+		$("#graphsection").css("width",(screen_width-80));
+		$("#graphsection").css("margin-left","40px");
+	}else{
+		$("graphsection").addClass("container");
+	}
+</script>
+
+    <!-- /#page-content-wrapper -->
+<script type="text/javascript">
+/*	$("#thermostat_submit").click(function(){
+		var highsetpoint = $("#highsetpoint").val();
+		var lowsetpoint = $("#lowsetpoint").val();
+		var mac_id = "SB_Floor1";
+		var 	ac_no = $("#ac_no").val();
+		
+		 $.ajax({
+            url:"thermostatwebservice",
+            type:"POST",
+            data:{"highsetpoint":highsetpoint,"lowsetpoint":lowsetpoint,"mac_id":mac_id,"ac_no":ac_no},
+            success:function(data){
+               alert("sucess");
+            },
+            error:function(){
+              alert("error");
+
+            }
+        });
+	});*/
+$("#thermostat_submit").click(function(){
+	alert("here");
+	 var highsetpoint = $("#highsetpoint").val();
+                var lowsetpoint = $("#lowsetpoint").val();
+		if (lowsetpoint =="")
+		lowsetpoint = null;
+                var mac_id = "ff5f";
+                var  ac_no = $( "#deviceMapId option:selected" ).text();
+                alert($( "#deviceMapId option:selected" ).text());
+                 $.ajax({
+            url:"thermostatwebservice",
+            type:"POST",
+            data:{"highsetpoint":highsetpoint,"lowsetpoint":lowsetpoint,"mac_id":mac_id,"ac_no":ac_no},
+	    contentTypr:"json",
+            success:function(data){
+               alert("sucess");
+            },
+            error:function(){
+              alert("error");
+
+            }
+        });
+
+
+
+}
+);
+</script>
+<script>
+//	$("tr":odd).css("background-color","#008B5E");
+//	$(".tbl-view-lbl").click(function(){
+	$("#setpointtable tbody").on("click", "tr .tbl-view-lbl", function(){
+	
+		console.log("clicked function called");
+		var scope = angular.element($("body")).scope();
+                scope.showSelectedAc($(this).attr('id'));
+/*		$("#viewacselectid").html('');
+		var idval = $(this).attr('id');
+			var text ='<option>select</option>';
+
+idval  ="tbl-view-lbl"+idval;
+var data  ='"#' + idval + ' > option"';
+alert("data"+data);
+		$('#'+idval+' > option').each(function() {
+	var curdata = $(this).text();
+    	text = text + '<option>'+$(this).text()+'</option>';
+
+});
+	alert(text);
+		$("#viewacselectid").append(text);*/
+});
+</script>
+<script>
+	$("#addsetpoints").click(function(){
+		var rowCount = $('#setpointtable >  tbody >  tr').length;
+		alert(rowCount);
+
+	});
+</script>
+<script>
+	$("#edit_modal_addbtn").on('click',function(){
+		var day = $("#day_edit_cal option:selected").text();
+		var datefrom = $("#timefrom_edit_cal option:selected").text();	
+		var dateto = $("#timeto_edit_cal option:selected").text();
+		var hsp = $("#hsp_edit_cal").val();
+		var lsp = $("#lsp_edit_cal").val();
+		console.log("day"+day+"datefrom"+datefrom+"dateto"+dateto+"hsp"+hsp+"lsp"+lsp);
+		var tablerow = '<tr class="edit_cal_viewtable_row"><td class="edit_cal_viewtable_timefrom">'+datefrom+'</td><td class="edit_cal_viewtable_timeto">'+dateto+'</td><td class="edit_cal_viewtable_hsp">'+hsp+'</td><td class="edit_cal_viewtable_lsp">'+lsp+'</td><td class="edit_cal_viewtable_trash"><span class="glyphicon glyphicon-trash" style="cursor:pointer;"></span></td></tr>';
+		var tbodyid = "editcalenndar_modal_setpointbody";
+		$("#editcalenndar_modal_setpointbody").append(tablerow);
+	});
+	$("#editcalendar_modal_setpointtable tbody").on("click", "tr .edit_cal_viewtable_trash", function(){
+//	$(".glyphicon-trash").on('click',function(){
+		alert("trash fn"+$(this).attr("id"));
+		console.log($(this).parent('tr').attr('class'));
+
+		$(this).closest('tr').remove();
+	});
+
+
+	$("#edit_cal_savechanges").click(function(){
+		var setPointObj = {};
+		var rows = [];
+		setPointObj["day"]= $("#day_edit_cal option:selected").text();
+		setPointObj["row"] = [];
+		 $("#editcalendar_modal_setpointtable tbody tr").each(function(i,row){
+			console.log("i is"+i+"row is"+row);
+			var rowele = {};
+			$(this).find('td').each(function(i,tdele){
+				console.log(tdele);
+				if($(this).attr('class') == "edit_cal_viewtable_timefrom")
+					rowele["timefrom"]= $(this).html();
+				if($(this).attr('class') == "edit_cal_viewtable_timeto")
+					rowele['timeto'] = $(this).html();
+				if($(this).attr('class') == "edit_cal_viewtable_hsp"){
+					if(typeof ($(this).html()) === "undefined")
+						rowele["hsp"] = 0;
+					else
+						rowele["hsp"] = parseInt($(this).html());
+				}
+				if($(this).attr('class') == "edit_cal_viewtable_lsp")
+					if( typeof $(this).html() === "undefined")
+						rowele["lsp"] = 0;
+					else
+	                                        rowele["lsp"] = parseInt($(this).html());
+			});
+			setPointObj["row"].push(rowele);		
+		});
+				console.log("jsonobj is");
+			console.log(setPointObj);
+		$.each(setPointObj["row"],function(index, element) {
+			console.log("ele is");
+    			console.log(element);
+		});
+		var scope = angular.element($("body")).scope();
+		scope.calendarInfo(setPointObj);
+		scope.saveBaseCalendar(setPointObj);
+
+	});
+	$("#day_edit_cal").change(function(){
+		$("#editcalendar_modal_setpointtable tbody").empty();
+		 var scope = angular.element($("body")).scope();
+		scope.setpoint_tbl_for_choosen_day();
+	});
+	$("#setpoint_main_tblview").change(function(){
+		$("#setpointtable tbody").empty();
+                 var scope = angular.element($("body")).scope();
+                scope.setpoint_tblview_main_for_choosen_day();
+	});
+//	$(".tbl-chng-lbl").click(function(){
+	$("#setpointtable tbody").on("click", "tr .tbl-chng-lbl", function(){
+	
+		 var scope = angular.element($("body")).scope();
+		scope.current_row_no = $(this).attr('class').trim().slice(-1);
+		var classname = "row"+scope.current_row_no;
+		$("#edit_aclist_cboxes").removeAttr('class');
+		$("#edit_aclist_cboxes").attr('class','btn btn-success');
+		$("#edit_aclist_cboxes").addClass(classname);
+		alert("change"+scope.current_row_no);
+		scope.definecbox_for_changeac_modal();
+	});
+	$("#occupancy_section").on("click","#occupancy_based_submit",function(){
+		 var scope = angular.element($("body")).scope();
+		scope.updateSetpointforOccupancy();
+	});
+</script>
+
+
+
+
+
+
+
+
+

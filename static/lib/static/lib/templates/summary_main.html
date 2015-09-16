@@ -1,0 +1,282 @@
+<!-- Page Content -->
+ <style>
+
+ .axis {
+   font: 10px sans-serif;
+ }
+
+ .axis path,
+ .axis line {
+   fill: none;
+   stroke: #000;
+   shape-rendering: crispEdges;
+ }
+
+ </style>
+
+<div id="graphsection">
+ 
+      <!-- <div class="row" style="margin-top:40px;">
+         
+          <div class = "col-md-6" id="menu-toggle" ng-click ="sidebar_toggle()">
+            <span class="cstmspan"></span>
+            <span class="whtecstmspan"></span>
+            <span class="cstmspan"></span>
+            <span class="whtecstmspan"></span>
+            <span class="cstmspan"></span>
+          </div>
+            <div class = "col-md-3" >
+            
+          </div>
+           <div class = "col-md-3" >-->
+            <div style="margin-top:30px;"></div>
+           
+      <div class="panel panel-default" style="margin-top:30px;">
+           <div class="panel-heading">
+             <h4 class="panel-title">
+               <a data-toggle="collapse" data-parent="#accordion" href="">
+                 KWh per Person per Month 
+               </a>
+             </h4>
+           </div>
+           <div id="collapseOne" class="panel-collapse collapse in">             
+             <div id="loading-g1">
+               
+             </div>
+             <div class="panel-body g1"  id="g1" >
+              <simple-line controllerename="'getKwhpersonmonth'"  yaxislabelname="'KWh per person'" xaxislabelname= "'Month'" classname="'g1'"></bar-grap>                  
+          
+
+  
+
+
+
+	   </div>
+	 	<div class="row">
+    		<div class="col-md-5">
+    		</div>
+    	
+    			<div class="col-md-4">
+    			<div class="col-md-4">
+    			<div style="border:1px solid #38595E; background-color:#38595E;height:8px;"></div>
+    			</div>
+    			<div class="col-md-8">
+    			<label style="font-size:12px;">2013</label>
+    			</div>
+    		</div>
+    			<div class="col-md-3">
+    		</div>
+    
+    	
+    		    	</div>
+    		 	<div class="row">
+    		<div class="col-md-5">
+    		</div>
+    	
+    			<div class="col-md-4">
+    			<div class="col-md-4">
+    			<div style="border:1px solid red; background-color:red;height:8px;"></div>
+    			</div>
+    			<div class="col-md-8">
+    			<label style="font-size:12px;" >2014</label>
+    			</div>
+    		</div>
+    			<div class="col-md-3">
+    		</div>
+    
+    	
+    		    	</div>
+    	
+
+           </div>
+      </div>   
+	      <div class="panel panel-default" style="margin-top:30px;">
+           <div class="panel-heading">
+             <h4 class="panel-title">
+               <a data-toggle="collapse" data-parent="#accordion" href="">
+                KWh per Sqft per Month
+               </a>
+             </h4>
+           </div>
+           <div id="collapseOne" class="panel-collapse collapse in">             
+             <div id="loading-g2">
+               
+             </div>
+             <div class="panel-body g1"  id="g2" >
+              <simple-line controllerename="'getKwhsquare'"  yaxislabelname="'KWh per square feet'" xaxislabelname= "'Month'" classname="'g1'"></simple-line>                  
+             </div> 
+
+
+	 	<div class="row">
+    		<div class="col-md-5">
+    		</div>
+    	
+    			<div class="col-md-4">
+    			<div class="col-md-4">
+    			<div style="border:1px solid #38595E; background-color:#38595E;height:8px;"></div>
+    			</div>
+    			<div class="col-md-8">
+    			<label style="font-size:12px;">2013</label>
+    			</div>
+    		</div>
+    			<div class="col-md-3">
+    		</div>
+    
+    	
+    		    	</div>
+    		 	<div class="row">
+    		<div class="col-md-5">
+    		</div>
+    	
+    			<div class="col-md-4">
+    			<div class="col-md-4">
+    			<div style="border:1px solid red; background-color:red;height:8px;"></div>
+    			</div>
+    			<div class="col-md-8">
+    			<label style="font-size:12px;" >2014</label>
+    			</div>
+    		</div>
+    			<div class="col-md-3">
+    		</div>
+    
+    	
+    		    	</div>
+    	
+
+
+ 
+           </div>
+      </div> 
+       <div class="panel panel-default" style="margin-top:30px;">
+           <div class="panel-heading">
+             <h4 class="panel-title">
+               <a data-toggle="collapse" data-parent="#accordion" href="">
+                 KWh per Person-hour
+               </a>
+             </h4>
+           </div>
+           <div id="collapseOne" class="panel-collapse collapse in">             
+             <div id="loading-g3">
+               
+             </div>
+             <div class="panel-body g1"  id="g3" >
+              <simple-line controllerename="'getKwhpersonhour'"  yaxislabelname="'KWh per hour'"  xaxislabelname= "'Month'"classname="'g1'"></simple-line>    
+             </div> 
+
+	 	<div class="row">
+    		<div class="col-md-5">
+    		</div>
+    	
+    			<div class="col-md-4">
+    			<div class="col-md-4">
+    			<div style="border:1px solid #38595E; background-color:#38595E;height:8px;"></div>
+    			</div>
+    			<div class="col-md-8">
+    			<label style="font-size:12px;">2013</label>
+    			</div>
+    		</div>
+    			<div class="col-md-3">
+    		</div>
+    
+    	
+    		    	</div>
+    		 	<div class="row">
+    		<div class="col-md-5">
+    		</div>
+    	
+    			<div class="col-md-4">
+    			<div class="col-md-4">
+    			<div style="border:1px solid red; background-color:red;height:8px;"></div>
+    			</div>
+    			<div class="col-md-8">
+    			<label style="font-size:12px;" >2014</label>
+    			</div>
+    		</div>
+    			<div class="col-md-3">
+    		</div>
+    
+    	
+    		    	</div>
+    	
+
+           </div>
+      </div> 
+	</div> 
+
+<script>
+/*var tempdata = {date:['2013-01','2013-02','2013-03','2013-04','2013-05','2013-06','2013-07','2013-08'],value:[411,523,633,400,567,345,123,123]};
+console.log("mydata");*/
+/*var tempdata = {
+        "jsonData": 
+    [{"date":"date","value":"value"},
+    {"date":"2013-01","value":"607"},
+    {"date":"2013-02","value":"600"},
+    {"date":"2013-03","value":"609"},
+    ]
+    }
+var data = tempdata.jsonData;*/
+ /*var data = [
+        {
+            "date": "2013-01",
+            "value": "611"
+        },
+        {
+           "date": "2013-02",
+            "value": "633"
+        }, 
+        {
+            "date": "2013-03",
+            "value": "511"
+        },
+         {
+            "date": "2013-04",
+            "value": "811"
+        },
+         {
+            "date": "2013-05",
+            "value": "121"
+        },
+         {
+            "date": "2013-06",
+            "value": "121"
+        },
+        {
+            "date": "2013-07",
+            "value": "231"
+        },
+        {
+            "date": "2013-08",
+            "value": "541"
+        },
+        {
+            "date": "2013-09",
+            "value": "411"
+        },
+        {
+            "date": "2013-10",
+            "value": "611"
+        }
+        ];*/
+
+
+
+
+
+
+</script>
+<script>
+if(screen_width > 1000){
+	$("#graphsection").css("width",(screen_width-80));
+	$("#graphsection").css("margin-left","40px");
+
+}else{
+	$("#graphsection").addClass("container");
+}
+
+</script>
+
+
+
+
+    <!-- /#page-content-wrapper -->
+

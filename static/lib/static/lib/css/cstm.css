@@ -1,0 +1,39 @@
+.cstmspan{
+  cursor: pointer;
+  height:5px;
+  width:35px;
+  background: #38595E;
+  display: block;
+   content: '';
+}
+.whtecstmspan{
+  cursor: pointer;
+  height:3px;
+  width:35px;
+  background: white;
+  display: block;
+   content: '';
+}
+.tooltip_marker {
+display: block;
+font-size: 20px;
+background-image: url('http://demo.qodeinteractive.com/elision/demo_images/tooltip_button.png');
+background-position: 0px 0px;
+background-repeat: no-repeat;
+background-size: 25px 25px;
+width: 25px;
+height: 25px;
+text-align: center;
+line-height: 25px;
+border-radius: 100px;
+-moz-transition:all .5s ease-in-out;
+-webkit-transition:all .5s ease-in-out;
+-o-transition:all .5s ease-in-out;
+-ms-transition:all .5s ease-in-out;
+transition:all .5s ease-in-out;
+/* order: name, direction, duration, iteration-count, timing-function */  
+-moz-animation:blink normal 1s infinite ease-in-out; /* Firefox */
+-webkit-animation:blink normal 1s infinite ease-in-out; /* Webkit */
+-ms-animation:blink normal 1s infinite ease-in-out; /* IE */
+animation:blink normal 1s infinite ease-in-out; /* Opera and prob css3 final iteration*/
+}

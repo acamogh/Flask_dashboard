@@ -1,0 +1,110 @@
+<!-- Page Content -->
+ <style>
+
+ .axis {
+   font: 10px sans-serif;
+ }
+
+ .axis path,
+ .axis line {
+   fill: none;
+   stroke: #000;
+   shape-rendering: crispEdges;
+ }
+
+ </style>
+
+
+  <div id="graphsection">
+      <!-- <div class="row" style="margin-top:40px;">
+         
+          <div class = "col-md-6" id="menu-toggle" ng-click ="sidebar_toggle()">
+            <span class="cstmspan"></span>
+            <span class="whtecstmspan"></span>
+            <span class="cstmspan"></span>
+            <span class="whtecstmspan"></span>
+            <span class="cstmspan"></span>
+          </div>
+            <div class = "col-md-3" >
+            
+          </div>
+           <div class = "col-md-3" >
+            <img src="/static/lib/img/mindtree.png">
+          </div>
+      </div> -->
+      <div class="row " style="margin-top:30px;">
+      <div class="col-md-3"></div>
+        <div class="col-md-2">
+          <label>Select year:</label>
+          <select class="form-control select-menu" id="yearfrom" style="border-color:#6eb344;background-color:#f3f3f3;">
+            <option value ="0">Select</option>
+<!--            <option value="2013">2014</option>-->
+            <option value="2014">2014</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+            <label>Select Month:</label>
+            <select  class="form-control select-menu"  id="monthMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="0">Select</option>      
+		<option value = "6">June</option>          
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">Sep</option>
+		              <option value="10">All</option>
+
+            </select>
+
+
+        </div> 
+             
+        <div class="col-md-2">
+              <label  style = "visibility: hidden;"> some label    </label>
+              <button type="button" class="btn btn-success" id="summary_go_btn" style="display:block;">Submit</button>
+            
+        </div>
+       <div class="col-md-3"></div>
+      </div>
+      <div style="margin-top:30px;"></div>
+           
+     
+        <div class="panel panel-default" style="margin-top:30px;">
+           <div class="panel-heading">
+             <h4 class="panel-title">
+               <a data-toggle="collapse" data-parent="#accordion" href="">
+                Peak Load Trend 
+               </a>
+             </h4>
+           </div>
+           <div id="collapseOne" class="panel-collapse collapse in">             
+             <div id="loading-g1">
+               
+             </div>
+             <div class="panel-body g1"  id="g1" >
+              <peak-graph controllerename="'getKwhsquare'"  yaxislabelname="'Peak Load'" xaxislabelname= "'Date'" classname="'g1'"></peak-graph>                  
+             </div>
+           </div>
+      </div> 
+      
+  </div>
+
+
+
+
+<script>
+if(screen_width > 1000){
+	$("#graphsection").css("width",(screen_width-80));
+	$("#graphsection").css("margin-left","40px");
+
+}else{
+	$("#graphsection").addClass("container");
+}
+
+</script>
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+<section class="colorBg1 colorBg">
+
+        <div class=" container">
+
+            <div class="login-form-section">
+                <div class="login-content ">
+                    <form role="form"  name = "smartbuilding_login_form">
+                        <div class="section-title form-group">
+                            <h3>LogIn to your Account..</h3>{{name}}
+                        </div>
+                        <div class="textbox-wrap form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
+                                <input type="text" required="required" id="username" name="username" class="form-control" placeholder="Username" />
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-key icon-color"></i></span>
+                                <input type="password" required="required" name="password" id="password" class="form-control " placeholder="Password" />
+                            </div>
+                        </div>
+                        <div class="login-form-action clearfix">
+                            <div class="checkbox pull-left">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" checked name="iCheck">
+                                </div>
+                                <span class="checkbox-text pull-left">&nbsp;Remember Me</span>
+                            </div>
+                            <button type="button" ng-click="smartBuildingsLoginForm()" class="btn btn-primary pull-right" id="login_submit">LogIn &nbsp; <i class="icon-chevron-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="login-form-links link1 ">
+                    <h4 class="blue">Don't have an Account?</h4>
+                    <span>No worry</span>
+                    <a href="#" id="smartBuildingsRegisterationDisplay" ng-click="smartBuildingsRegisterationDisplay()" class="blue">Click Here</a>
+                    <span>to Register</span>
+                </div>
+                <div class="login-form-links link2 ">
+                    <h4 class="green">Forget your Password?</h4>
+                    <span>Dont worry</span>
+                    <a href="#demo3" class="green">Click Here</a>
+                    <span>to Get New Ones</span>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>

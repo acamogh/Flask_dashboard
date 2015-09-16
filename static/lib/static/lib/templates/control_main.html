@@ -1,0 +1,901 @@
+<!-- Page Content -->
+<!--<script>
+$(function() {
+    $( "#dialog-message" ).dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+  });
+</script>-->
+<script type="text/javascript">
+$("#bodyid").css("background-color","#f3f3f3");
+
+/*        $("#dialog-message").dialog({ autoOpen: false });
+ 
+        $(document).on('click','.editsetpoint',function (){
+          var indexObj =  getSetPointIndex();
+         
+         
+  $("#dialog-message").dialog('open');
+                return false;
+
+ });
+*/
+</script>
+<style type="text/css">
+  hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #fff;
+    margin: 1em 0; padding: 0; }
+</style>
+<script type="text/javascript">
+  
+  function submitnewSetpoint(){
+      var index = getSetPointIndex();
+
+      var newSetVal = $("#input-setpoint2").val();
+
+     
+      $("#"+index).html(newSetVal);
+      $("#input-setpoint2").val("")
+      $(" #setpointmodal" ).modal( "hide" );
+
+  }
+</script>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Control Mode</h4>
+      </div>
+      <div class="modal-body">
+
+         
+         
+                    <label>Enter New Set Point:</label>
+                    <input type="text"  class="form-control select-menu"  id="input-setpoint" style="border-color:#6eb344;background-color:#f3f3f3;">
+                      
+                      
+                  
+            
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="submit-setpoint-form" ng-click = "submitSetpoint()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="setpointmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Control Mode</h4>
+      </div>
+      <div class="modal-body">
+
+         
+         
+                    <label>Enter New Set Point:</label>
+                    <input type="text"  class="form-control select-menu"  id="input-setpoint2" style="border-color:#6eb344;background-color:#f3f3f3;">
+                      
+                      
+                  
+            
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="submit-setpoint-form" 
+        onclick = "submitnewSetpoint()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div id="dialog-message" title="Control Mode">
+  <p>
+    <!--  <input type="textbox" id="input-setpoint" placeholder="new Set point"> -->
+
+  </p>
+  <!-- <button type="button" class="btn btn-primary" id="submit-setpoint-form" ng-click = "submitSetpoint()">submit</button> -->
+  
+</div>
+ 
+
+
+  <div class="container" style="background-color:#f3f3f3">
+
+    <!--   <div class="row" style="margin-top:40px;">
+        
+          <div class="col-md-6" id="menu-toggle" ng-click ="sidebar_toggle()">
+            <span class="cstmspan"></span>
+            <span class="whtecstmspan"></span>
+            <span class="cstmspan"></span>
+            <span class="whtecstmspan"></span>
+            <span class="cstmspan"></span>
+          </div>
+          <div class = "col-md-6">
+            <img src="/static/lib/img/mindtree.png">
+          </div>
+      </div> -->
+
+
+
+ <div class="row" style="margin-top:40px;">
+<!--       <div class="col-md-5"></div>
+      <div class="col-md-6">
+          <input type="radio" name="mode-select" id="automatic-mode" value="automatic_mode" class="mode-radio-btn"><label>Automatic</label>
+   <input type="radio" checked name="mode-select" id="manual-mode" value="manual_mode" class="mode-radio-btn" style="margin-left:10px;"><label>Manual</label>
+   </div>
+   <div class="col-md-1"></div> -->
+       </div>
+
+<!-- <div class="row" style="margin-top:40px;display:none;" id="automatic-section">
+   <div class="col-md-5"></div>
+      <div class="col-md-7">
+       
+       </div>
+</div> -->
+
+<div id="autosec">
+      <div style="margin-top:10px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(1)">
+      <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;">Lower Ground Floor </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:#d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Switch Room</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;"><p id="1" style="margin:10px;font-size:14px;text-align:center;">23</p></div></div>
+
+</div>
+
+
+
+
+
+<div style="margin-left:40px;float:left;cursor:pointer" >
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p>
+         <label style="font-family:arial;font-size:14px;font-weight:lighter;">Min <input type="radio" name="mode-select" class="lgf_mode" value="min_mode"   style="margin-right:10px;"></label>
+         <label style="font-family:arial;font-size:14px;font-weight:lighter;">Mid <input type="radio" name="mode-select" class="lgf_mode" value="mid_mode"   style="margin-right:10px;"></label>
+          <label style="font-family:arial;font-size:14px;font-weight:lighter;">Max <input type="radio" name="mode-select" class="lgf_mode" value="max_mode"  style="margin-right:10px;"></label>
+    </div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;cursor:pointer"data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(2)">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Intel lab</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;"><p id="2" style="margin:10px;font-size:14px;text-align:center;">23</p></div></div>
+</div>
+
+
+
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(3)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">FLIR lab</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;"><p style="margin:10px;font-size:14px;text-align:center;" id="3">23</p></div></div>
+</div>
+
+
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(4)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">LSI lab</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="4">23</p></div></div>
+</div>
+
+
+
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(5)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Test lab</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="5">23</p></div></div>
+</div>
+
+
+<div style="float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(6)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"></p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">RMFD lab</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="6">23</p></div></div>
+</div>
+
+
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(7)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Alcatel lab</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="7">23</p></div></div>
+</div>
+
+
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(8)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Jabra test center</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="8" >22</p></div></div>
+</div>
+
+
+
+
+
+
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(9)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Comfort Ac</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="9">23</p></div></div>
+</div>
+
+
+
+
+
+<!-- GROUND FLOOR ---------------------------->
+
+<div style="clear:both;"></div>
+
+
+  <div style="margin-top:10px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(10)">
+      <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;">Ground Floor </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Switch Room</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;"><p id="10" style="margin:10px;font-size:14px;text-align:center;">23</p></div></div>
+
+</div>
+
+<div style="margin-left:40px;float:left;cursor:pointer">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p>
+
+       <label style="font-family:arial;font-size:14px;font-weight:lighter;">Min <input type="radio" name="mode-select" class="gf_mode" value="min_mode"  checked style="margin-right:10px;"></label>
+         <label style="font-family:arial;font-size:14px;font-weight:lighter;">Mid <input type="radio" name="mode-select" class="gf_mode" value="mid_mode"  checked style="margin-right:10px;"></label>
+          <label style="font-family:arial;font-size:14px;font-weight:lighter;">Max <input type="radio" name="mode-select" class="gf_mode" value="max_mode"  checked style="margin-right:10px;"></label>
+    </div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;cursor:pointer"data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(11)">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Comfort AC </p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="11">23</p></div></div>
+</div>
+
+
+<!-- Ist  FLOOR ---------------------------->
+
+
+
+<div style="clear:both;"></div>
+
+
+  <div style="margin-top:10px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(12)">
+      <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;">1st Floor </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Switch Room</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;"><p id="12" style="margin:10px;font-size:14px;text-align:center;">23</p></div></div>
+
+</div>
+
+<div style="margin-left:40px;float:left;cursor:pointer" >
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p>
+ <label style="font-family:arial;font-size:14px;font-weight:lighter;">Min <input type="radio" name="mode-select" class="first_mode" value="min_mode"  checked style="margin-right:10px;"></label>
+         <label style="font-family:arial;font-size:14px;font-weight:lighter;">Mid <input type="radio" name="mode-select" class="first_mode" value="mid_mode"  checked style="margin-right:10px;"></label>
+          <label style="font-family:arial;font-size:14px;font-weight:lighter;">Max <input type="radio" name="mode-select" class="first_mode" value="max_mode"  checked style="margin-right:10px;"></label>
+
+    </div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;cursor:pointer"data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(13)">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">EPABX Room </p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="13">23</p></div></div>
+</div>
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(14)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">hardware lab </p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="14">22</p></div></div>
+</div>
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(15)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Research lab 1 & 2 </p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="15">23</p></div></div>
+</div>
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(16)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Comfort AC </p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="16">23</p></div></div>
+</div>
+
+     
+
+
+   <!-- 2nd  FLOOR ---------------------------->
+
+
+
+<div style="clear:both;"></div>
+
+
+  <div style="margin-top:10px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(17)">
+      <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;">2nd Floor </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Switch Room</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;"><p id="17" style="margin:10px;font-size:17px;text-align:center;">23</p></div></div>
+
+</div>
+
+<div style="margin-left:40px;float:left;cursor:pointer" >
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p>
+
+ <label style="font-family:arial;font-size:14px;font-weight:lighter;">Min <input type="radio" name="mode-select" class="sec_mode" value="min_mode"   style="margin-right:10px;"></label>
+         <label style="font-family:arial;font-size:14px;font-weight:lighter;">Mid <input type="radio" name="mode-select" class="sec_mode" value="mid_mode"   style="margin-right:10px;"></label>
+          <label style="font-family:arial;font-size:14px;font-weight:lighter;">Max <input type="radio" name="mode-select" class="sec_mode" value="max_mode"   style="margin-right:10px;"></label>
+    </div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(18)">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Symantec lab1 </p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="18">23</p></div></div>
+</div>
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(19)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Symantec lab2 </p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="19">22</p></div></div>
+</div>
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(20)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Symantec lab3 </p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="20">23</p></div></div>
+</div>
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(21)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Symantec ODC </p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="21">23</p></div></div>
+</div>
+
+<div style="float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(22)">
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Comfort AC </p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="22">23</p></div></div>
+</div>
+  
+     
+ 
+<!-- 3rd FLOOR --------------------------->
+
+<div style="clear:both;"></div>
+
+
+  <div style="margin-top:10px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(23)">
+      <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;">3rd Floor </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Switch Room</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;"><p id="23" style="margin:10px;font-size:14px;text-align:center;">23</p></div></div>
+
+</div>
+
+<div style="margin-left:40px;float:left;cursor:pointer" >
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p>
+
+ <label style="font-family:arial;font-size:14px;font-weight:lighter;">Min <input type="radio" name="mode-select" class="third_mode" value="min_mode"  checked style="margin-right:10px;"></label>
+         <label style="font-family:arial;font-size:14px;font-weight:lighter;">Mid <input type="radio" name="mode-select" class="third_mode" value="mid_mode"  checked style="margin-right:10px;"></label>
+          <label style="font-family:arial;font-size:14px;font-weight:lighter;">Max <input type="radio" name="mode-select" class="third_mode" value="max_mode"  checked style="margin-right:10px;"></label>
+
+    </div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa cursor:pointer;"data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(24)">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Comfort AC </p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="24">23</p></div></div>
+</div>
+
+
+
+
+ 
+<!-- 4th FLOOR ------------------------>
+
+<div style="clear:both;"></div>
+
+
+  <div style="margin-top:10px;float:left;cursor:pointer" data-toggle="modal" data-target="#setpointmodal" onclick="setSetPointIndex(25)">
+      <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;">4th Floor </p></div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Switch Room</p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;"><p id="25" style="margin:10px;font-size:14px;text-align:center;">23</p></div></div>
+
+</div>
+
+<div style="margin-left:40px;float:left;cursor:pointer" data-toggle="modal" >
+    <div style="height:40px;"><p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;"> </p>
+
+ <label style="font-family:arial;font-size:14px;font-weight:lighter;">Min <input type="radio" name="mode-select" class="fourth_mode" value="min_mode"  checked style="margin-right:10px;"></label>
+         <label style="font-family:arial;font-size:14px;font-weight:lighter;">Mid <input type="radio" name="mode-select" class="fourth_mode" value="mid_mode"  checked style="margin-right:10px;"></label>
+          <label style="font-family:arial;font-size:14px;font-weight:lighter;">Max <input type="radio" name="mode-select" class="fourth_mode" value="max_mode"  checked style="margin-right:10px;"></label>
+
+    </div>
+            <div style="width:167px;height:140px;background-color:#fff;border-width: 2px;
+   border-bottom-width:1px;
+   border-bottom-color:d2d2d2;
+   border-bottom-style: solid;">
+      <img src="static/lib/img/Iconsfile/airconditioner.png" style="margin-top:25px;margin-left:25px;margin-bottom:25px;"><hr></div>
+      <div  style="width:167px;height:70px;background-color:#fafafa;cursor:pointer" data-target="#setpointmodal" onclick="setSetPointIndex(26)">
+      <p style="font-family:arial;font-size:14px;font-weight:bold;color#757575;text-align:center;color:#a2a2a2;">Comfort AC </p>
+      <div style="margin-left:45px;width:74px;height:30px;background-color:#fff;cursor:pointer"><p style="margin:10px;font-size:14px;text-align:center;" id="26">23</p></div></div>
+</div>
+
+</div>
+<div style="clear:both;"></div>
+<div class="row">
+	<div class="col-md-5"></div>
+	<div class="col-md-7"><button type="button" class="btn btn-success">Apply</button></div>
+</div>
+     
+             
+<!--   <div id="automatic-section">
+  <p>
+  <label for="amount">Maximum price:</label>
+  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+</p>
+<div class="row"> 
+<div id="slider-range-min" class="col-md-12"></div>
+</div>
+ <div class="row">
+<label class="col-md-4">min<input type="checkbox" id="min-hvac-cb" checked></label>
+<label class="col-md-4" style="text-align:center">Mid<input type="checkbox" id="mid-hvac-cb" style="display:none;" disabled ></label>
+<label class="col-md-4" style="text-align:right" >Max<input type="checkbox" id="max-hvac-cb" style="display:none;" ></label>
+</div> 
+</div> -->
+<!-- <div id="manual-section" style="display:none;">
+      <div class="row " style="margin-top:30px;">
+      <div class="col-md-3"></div>
+        <div class="col-md-2">
+            <label>Select Control</label>
+              <select class="form-control" ng-model="controlselectedValue" ng-options="val for val in gethardcodedcontrolMapData()" ng-change="clearMappingOnControl(controlselectedValue)"  id="wingMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+                  <option value="">Select</option>
+                 
+              </select>
+        </div>
+        <div class="col-md-2">
+            <label>Select Building:</label>
+            <select  class="form-control select-menu" ng-model="buildingselectedValue" ng-options="val for val in getBuildingMapData()" ng-change="clearMappingOnBuilding(buildingselectedValue)" id="buildingMapId"  style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">Select</option>                
+            </select>
+        </div>                
+        <div class="col-md-2">
+            <label>Select Floor</label>
+            <select class="form-control" ng-model="floorselectedValue"  ng-options="val for val in gethardcodedFloorMapData()" ng-change="clearMappingOnFloor(floorselectedValue)" id="floorMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">Select</option>      
+            </select>
+        </div>
+         <div class="col-md-3"></div>
+       
+        
+      </div>
+      <div style="margin-top:30px;"></div>
+      <button type="button" class="btn btn-info" id="meter_go_btn" style="display:block;margin:0 auto;" data-toggle="modal" data-target="#myModal2">Control</button>
+
+
+                
+      <div class="panel panel-default" style="margin-top:30px;">
+            <table class="table table-borde#fff" id="mytbl" >
+            <th style="width:100px;" id="th1">AHU</th>
+            <th style="width:100px;" id="th2">Set Point</th>
+
+             <tbody id="ahutable">
+
+</tbody>
+             </table>
+
+      </div>
+
+    
+
+    </div>  -->      
+  </div>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>Still under development
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <script>
+  $(function() {
+    $( "#slider-range-min" ).slider({
+      range: "min",
+      value: 37,
+      min: 1,
+      max: 700,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.value );
+        if((ui.value >= 320) && (ui.value <= 370))
+          {
+            $("#min-hvac-cb").css("display","none");
+            $("#max-hvac-cb").css("display","none");
+             $("#mid-hvac-cb").css("display","inline");
+              $("#min-hvac-cb").prop("checked",false);
+            $("#max-hvac-cb").prop("checked",false);
+             $("#mid-hvac-cb").prop("checked",true);
+
+          }
+        if((ui.value >= 0) && (ui.value <= 50))
+          {
+            $("#min-hvac-cb").css("display","inline");
+            $("#max-hvac-cb").css("display","none");
+             $("#mid-hvac-cb").css("display","none");
+               $("#min-hvac-cb").prop("checked",true);
+            $("#max-hvac-cb").prop("checked",false);
+             $("#mid-hvac-cb").prop("checked",false);
+
+          }
+          if((ui.value >= 620) && (ui.value <= 700))
+          {
+            $("#min-hvac-cb").css("display","none");
+            $("#max-hvac-cb").css("display","inline");
+             $("#mid-hvac-cb").css("display","none");
+              $("#min-hvac-cb").prop("checked",false);
+            $("#max-hvac-cb").prop("checked",true);
+             $("#mid-hvac-cb").prop("checked",false);
+
+
+          }
+      }
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value" ) );
+  });
+
+  </script>
+  <script>
+/*$(".mode-radio-btn").click(function(){
+    if(($(this).val()) == "manual_mode")
+     {
+       $("#manual-section").css('display','block');
+       $("#automatic-section").css('display','none');
+     }else{
+        $("#manual-section").css('display','none');
+       $("#automatic-section").css('display','block');
+     }
+
+});*/
+
+  </script>
+    <script>
+$(".mode-radio-btn").click(function(){
+ /*   if(($(this).val()) == "manual_mode")
+     {
+      alert("maual");
+       $("#autosec").css('display','none');
+       $("#automatic-section").css('display','block');
+     }else{
+        $("#autosec").css('display','block');
+       $("#automatic-section").css('display','none');
+     }*/
+
+});
+
+
+
+var min_lab = 23;
+var min_com = 25;
+var mid_lab = 25;
+var mid_com = 27;
+var max_lab = 27;
+var max_com = 29;
+$(".lgf_mode").click(function(){
+ // alert("lgf");
+  var labVal = 0;
+  var comVal = 0;
+  if(($(this).val()) == "min_mode"){
+    labVal = min_lab;
+    comVal = min_com;
+  }
+   if(($(this).val()) == "mid_mode"){
+    labVal = mid_lab;
+    comVal = mid_com;
+  }
+  if(($(this).val()) == "max_mode"){
+    labVal = max_lab;
+    comVal = max_com;
+  }
+for(var i=1;i<10;i++){
+  if(i!=9)
+  $("#"+i).html(labVal);
+  else
+    $("#"+i).html(comVal);
+}
+
+});
+
+
+
+$(".gf_mode").click(function(){
+ // alert("gh");
+  var labVal = 0;
+  var comVal = 0;
+  if(($(this).val()) == "min_mode"){
+    labVal = min_lab;
+    comVal = min_com;
+  }
+   if(($(this).val()) == "mid_mode"){
+    labVal = mid_lab;
+    comVal = mid_com;
+  }
+  if(($(this).val()) == "max_mode"){
+    labVal = max_lab;
+    comVal = max_com;
+  }
+for(var i=10;i<12;i++){
+  if(i!=11)
+  $("#"+i).html(labVal);
+  else
+    $("#"+i).html(comVal);
+}
+
+});
+
+
+
+
+$(".first_mode").click(function(){
+  var labVal = 0;
+  var comVal = 0;
+  if(($(this).val()) == "min_mode"){
+    labVal = min_lab;
+    comVal = min_com;
+  }
+   if(($(this).val()) == "mid_mode"){
+    labVal = mid_lab;
+    comVal = mid_com;
+  }
+  if(($(this).val()) == "max_mode"){
+    labVal = max_lab;
+    comVal = max_com;
+  }
+for(var i=12;i<17;i++){
+  if(i!=16)
+  $("#"+i).html(labVal);
+  else
+    $("#"+i).html(comVal);
+}
+
+});
+
+
+
+$(".sec_mode").click(function(){
+  var labVal = 0;
+  var comVal = 0;
+  if(($(this).val()) == "min_mode"){
+    labVal = min_lab;
+    comVal = min_com;
+  }
+   if(($(this).val()) == "mid_mode"){
+    labVal = mid_lab;
+    comVal = mid_com;
+  }
+  if(($(this).val()) == "max_mode"){
+    labVal = max_lab;
+    comVal = max_com;
+  }
+for(var i=17;i<23;i++){
+  if(i!=22)
+  $("#"+i).html(labVal);
+  else
+    $("#"+i).html(comVal);
+}
+
+});
+
+
+$(".third_mode").click(function(){
+  var labVal = 0;
+  var comVal = 0;
+  if(($(this).val()) == "min_mode"){
+    labVal = min_lab;
+    comVal = min_com;
+  }
+   if(($(this).val()) == "mid_mode"){
+    labVal = mid_lab;
+    comVal = mid_com;
+  }
+  if(($(this).val()) == "max_mode"){
+    labVal = max_lab;
+    comVal = max_com;
+  }
+for(var i=23;i<25;i++){
+  if(i!=24)
+  $("#"+i).html(labVal);
+  else
+    $("#"+i).html(comVal);
+}
+
+});
+
+
+$(".fourth_mode").click(function(){
+  var labVal = 0;
+  var comVal = 0;
+  if(($(this).val()) == "min_mode"){
+    labVal = min_lab;
+    comVal = min_com;
+  }
+   if(($(this).val()) == "mid_mode"){
+    labVal = mid_lab;
+    comVal = mid_com;
+  }
+  if(($(this).val()) == "max_mode"){
+    labVal = max_lab;
+    comVal = max_com;
+  }
+for(var i=25;i<27;i++){
+  if(i!=26)
+  $("#"+i).html(labVal);
+  else
+    $("#"+i).html(comVal);
+}
+
+});
+  </script>
+
+
+
+    <!-- /#page-content-wrapper -->
+

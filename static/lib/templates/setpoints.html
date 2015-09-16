@@ -1,0 +1,129 @@
+setpoints welcomes u
+
+        <div class="navbar navbar-default " role="navigation" style="background-color:#f3f3f3">
+      <div>
+        <div class="container">
+          <div class="navbar-header" style="height:100px;">
+            <img src="static/lib/img/logo.png" style="margin-top:8%;" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+<body ng-controller="SetpointCtrl" style="background-color:#eef1f1">
+<br>
+<div class="container">
+
+
+
+    <div style="text-align: center">
+      <label class="btn btn-primary btn-lg">
+        <input type="checkbox" name="Monday" ng-model="testModel.Monday" /> Monday</label>
+
+      <label class="btn btn-primary btn-lg">
+        <input type="checkbox" name="Tuesday" ng-model="testModel.Tuesday" /> Tuesday</label>
+
+      <label class="btn btn-primary btn-lg">
+        <input type="checkbox" name="Wednesday" ng-model="testModel.Wednesday" /> Wednesday</label>
+
+      <label class="btn btn-primary btn-lg">
+        <input type="checkbox" name="Thrusday" ng-model="testModel.Thrusday" /> Thrusday</label>
+
+      <label class="btn btn-md btn-primary btn-lg">
+        <input type="checkbox" name="Friday" ng-model="testModel.Friday" /> Friday</label>
+
+      <label class="btn btn-primary btn-lg">
+        <input type="checkbox" name="Saturday" ng-model="testModel.Saturday" /> Saturday</label>
+
+      <label class="btn btn-primary btn-lg">
+        <input type="checkbox" name="Sunday" ng-model="testModel.Sunday" /> Sunday</label>
+      <br>
+      <br>
+
+    </div>
+
+
+
+
+
+
+    <div class="col-md-3" style="text-align:center">
+      <label for="building_id">Select Building:</label>
+      <select class="form-control" id="building_id" ng-model="building_id" ng-options="bb as bb.building for bb in bosch"></select>
+      <br />
+    </div>
+
+    <div class="col-md-3" style="text-align:center">
+      <label for="floor_id">Select floor:</label>
+      <select class="form-control" ng-model="floor_id" ng-options="bb as bb.floor for bb in bosch"></select>
+      <br />
+    </div>
+
+    <div class="col-md-3" style="text-align:center">
+      <label for="sel_wing">Select Wing:</label>
+      <select class="form-control" ng-model="sel_wing" ng-options="wng as wng for wng in floor_id.wing"></select>
+      <br />
+    </div>
+
+    <div class="col-md-3" style="text-align:center">
+      <label for="ac_num">Select AC:</label>
+      <select class="form-control" ng-model="ac_num" ng-options="ac as ac for ac in floor_id.ac" ng-change="ddcheck()"></select>
+    </div>
+  
+  <br />
+
+
+
+
+
+
+
+
+
+
+
+  <table class="container table table-bordered" id="setpointtable">
+    <thead style="background-color:#75db1b;">
+      <th class="col-xs-1" style="color:#11772d;font-weight:bold;text-align:center">Time From</th>
+      <th class="col-xs-1" style="color:#11772d;font-weight:bold;text-align:center">Time To</th>
+      <th class="col-xs-1" style="color:#11772d;font-weight:bold;text-align:center">Set Point From</th>
+      <th class="col-xs-1" style="color:#11772d;font-weight:bold;text-align:center">Set Point To</th>
+      <th class="col-xs-1" style="color:#11772d;font-weight:bold;text-align:center">Remove</th>
+    </thead>
+
+
+    <tr ng-repeat="row in rows">
+      <td style="text-align:center;">
+        <!-- row timefrom -->
+        <input type="time" placeholder="{{row.tfPlaceholder}}" style="text-align:center;" ng-model="row.time_from">
+      </td>
+      <td style="text-align:center;">
+        <!-- row timeto -->
+        <input type="time" placeholder="{{row.ttPlaceholder}}" style="text-align:center;" ng-model="row.time_to">
+      </td>
+      <td style="text-align:center;">
+        <!-- row setPointfrom -->
+        <input type="range" style="width:70%;display:inline" step="0.01" min="15" max="40" ng-model="row.sp_from">
+        <input placeholder="{{row.spfPlaceholder}}" ng-model="row.sp_from" style="width:27%;text-align:center;" value="{{row.sp_from}}">
+      </td>
+      <td style="text-align:center;">
+        <!-- row setPOINTto -->
+        <input type="range" style="width:70%;display:inline" step="0.01" min="15" max="40" ng-model="row.sp_to">
+        <input placeholder="{{row.spfPlaceholder}}" ng-model="row.sp_to" style="width:27%;text-align:center;" value="{{row.sp_to}}">
+      </td>
+      <td style="text-align:center">
+        <!-- row deleteRow -->
+        <input type="button" value="delete" ng-click="deleteRows($index)" />
+      </td>
+    </tr>
+
+  </table>
+
+  <button click-once="Thanks..." ng-click="submit()">submit</button>
+  <button ng-click="addDynamically()">Add Row</button>
+
+
+
+
+
+  </div>

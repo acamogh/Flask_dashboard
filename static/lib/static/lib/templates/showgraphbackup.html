@@ -1,0 +1,25 @@
+<button type="button" id="reset">Reset random day...</button>
+<div id="g1" style="width:900px;height:400px;background-color:red;">
+<line-chart powerfilename="'data_datefile.csv'"  temperaturefilename="'temperature.csv'"></line-chart>
+</div>
+<div id="g2" style="width:900px;height:400px;background-color:steelblue;">
+<line-chart powerfilename="'data_datefile.csv'" temperaturefilename="'temperature.csv'"></line-chart> 
+</div>
+<div id="area">
+</div>
+<!-- test token-->
+<button type="button" id="testtoken">test token...</button>
+<button type="button" id="getcsvdata">CSV</button>{{name}}
+<select ng-model="buildingselectedValue" ng-change="clearMappingOnBuilding(buildingselectedValue)" id="buildingMapId">
+	<option value="">select</option>
+	<option>mindtree_phase1</option>
+	<option>smartBuildings</option>
+</select>
+<select ng-model="floorselectedValue"  ng-options="val for val in getFloorMapData()" ng-change="clearMappingOnFloor(floorselectedValue)" id="floorMapId">
+ 	<option value="">Select</option>      
+</select>
+<p>Ordered by: {{floorselectedValue}}</p>
+<select ng-model="wingselectedValue" ng-options = "val for val in getWingMapData()" id="wingMapId">
+	<option value="">Select</option>
+</select>
+<button ng-click="testrun()">go</button>

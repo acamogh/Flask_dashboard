@@ -1,0 +1,15 @@
+
+<ng-include src ="'static/lib/templates/header.html'"></ng-include>
+<div id="wrapper">
+  <ng-include src ="'static/lib/templates/sidebar.html'"></ng-include>
+  <ng-include src ="'static/lib/templates/analysis_main.html'"></ng-include>
+</div>
+<script>
+    $("#menu-toggle").click(function(e) {
+       e.preventDefault();
+       $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+
+

@@ -1,0 +1,240 @@
+<!-- Page Content -->
+<!--<script>
+$(function() {
+    $( "#dialog-message" ).dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+  });
+</script>-->
+<script type="text/javascript">
+
+/*        $("#dialog-message").dialog({ autoOpen: false });
+ 
+        $(document).on('click','.editsetpoint',function (){
+          var indexObj =  getSetPointIndex();
+         
+         
+  $("#dialog-message").dialog('open');
+                return false;
+
+ });
+*/
+</script>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Control Mode</h4>
+      </div>
+      <div class="modal-body">
+
+         
+         
+                    <label>Enter New Set Point:</label>
+                    <input type="text"  class="form-control select-menu"  id="input-setpoint" style="border-color:#6eb344;background-color:#f3f3f3;">
+                      
+                      
+                  
+            
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="submit-setpoint-form" ng-click = "submitSetpoint()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dialog-message" title="Control Mode">
+  <p>
+    <!--  <input type="textbox" id="input-setpoint" placeholder="new Set point"> -->
+
+  </p>
+  <!-- <button type="button" class="btn btn-primary" id="submit-setpoint-form" ng-click = "submitSetpoint()">submit</button> -->
+  
+</div>
+ 
+
+
+  <div class="container">
+
+    <!--   <div class="row" style="margin-top:40px;">
+        
+          <div class="col-md-6" id="menu-toggle" ng-click ="sidebar_toggle()">
+            <span class="cstmspan"></span>
+            <span class="whtecstmspan"></span>
+            <span class="cstmspan"></span>
+            <span class="whtecstmspan"></span>
+            <span class="cstmspan"></span>
+          </div>
+          <div class = "col-md-6">
+            <img src="/static/lib/img/mindtree.png">
+          </div>
+      </div> -->
+    <!--   <div class="row" style="margin-top:40px;">
+      <div class="col-md-5"></div>
+      <div class="col-md-6">
+          <input type="radio" name="mode-select" id="automatic-mode" value="automatic_mode" class="mode-radio-btn" checked><label>Automatic</label>
+   <input type="radio" name="mode-select" id="manual-mode" value="manual_mode" class="mode-radio-btn" style="margin-left:10px;"><label>Manual</label>
+   </div>
+   <div class="col-md-1"></div>
+       </div> -->
+             
+<!--   <div id="automatic-section">
+  <p>
+  <label for="amount">Maximum price:</label>
+  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+</p>
+<div class="row"> 
+<div id="slider-range-min" class="col-md-12"></div>
+</div>
+<div class="row">
+<label class="col-md-4">min<input type="checkbox" id="min-hvac-cb" checked></label>
+<label class="col-md-4" style="text-align:center">Mid<input type="checkbox" id="mid-hvac-cb" style="display:none;" disabled ></label>
+<label class="col-md-4" style="text-align:right" >Max<input type="checkbox" id="max-hvac-cb" style="display:none;" ></label>
+</div>
+</div> -->
+<div id="manual-section" >
+      <div class="row " style="margin-top:30px;">
+      <div class="col-md-3"></div>
+       <!--  <div class="col-md-2">
+            <label>Select Control</label>
+              <select class="form-control" ng-model="controlselectedValue" ng-options="val for val in gethardcodedcontrolMapData()" ng-change="clearMappingOnControl(controlselectedValue)"  id="wingMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+                  <option value="">Select</option>
+                 
+              </select>
+        </div> -->
+        <div class="col-md-2">
+            <label>Select Building:</label>
+            <select  class="form-control select-menu" ng-model="buildingselectedValue" ng-options="val for val in getBuildingMapData()" ng-change="clearMappingOnBuilding(buildingselectedValue)" id="buildingMapId"  style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">Select</option>                
+            </select>
+        </div>                
+        <div class="col-md-2">
+            <label>Select Floor</label>
+            <select class="form-control" ng-model="floorselectedValue"  ng-options="val for val in gethardcodedFloorMapData()" ng-change="clearMappingOnFloor(floorselectedValue)" id="floorMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">Select</option>      
+            </select>
+        </div>
+        <div class="col-md-2">
+          
+        </div>
+         <div class="col-md-3"></div>
+        <!-- <div class="col-md-3">
+            <label>Select wing</label>
+            <select class="form-control" ng-model="wingselectedValue" ng-change = "clearMappingOnWing(wingselectedValue)" ng-options = "val for val in getWingMapData()" id="wingMapId">
+              <option value="">Select</option>
+            </select>
+        </div> -->
+        
+      </div>
+   <!--    <div style="margin-top:30px;"></div>
+      <button type="button" class="btn btn-info" id="meter_go_btn" style="display:block;margin:0 auto;" data-toggle="modal" data-target="#myModal2">Control</button> -->
+
+
+                
+      <div class="panel panel-default" style="margin-top:30px;">
+            <table class="table table-bordered" id="mytbl" >
+            <th style="width:100px;" id="th1">Lights status in first half area</th>
+            <th style="width:100px;" id="th2">Lights status in secong half area</th>
+
+             <tbody id="ahutable">
+
+</tbody>
+             </table>
+
+      </div>
+
+    
+
+    </div>       
+  </div>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>Still under development
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <script>
+  $(function() {
+    $( "#slider-range-min" ).slider({
+      range: "min",
+      value: 37,
+      min: 1,
+      max: 700,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.value );
+        if((ui.value >= 320) && (ui.value <= 370))
+          {
+            $("#min-hvac-cb").css("display","none");
+            $("#max-hvac-cb").css("display","none");
+             $("#mid-hvac-cb").css("display","inline");
+              $("#min-hvac-cb").prop("checked",false);
+            $("#max-hvac-cb").prop("checked",false);
+             $("#mid-hvac-cb").prop("checked",true);
+
+          }
+        if((ui.value >= 0) && (ui.value <= 50))
+          {
+            $("#min-hvac-cb").css("display","inline");
+            $("#max-hvac-cb").css("display","none");
+             $("#mid-hvac-cb").css("display","none");
+               $("#min-hvac-cb").prop("checked",true);
+            $("#max-hvac-cb").prop("checked",false);
+             $("#mid-hvac-cb").prop("checked",false);
+
+          }
+          if((ui.value >= 620) && (ui.value <= 700))
+          {
+            $("#min-hvac-cb").css("display","none");
+            $("#max-hvac-cb").css("display","inline");
+             $("#mid-hvac-cb").css("display","none");
+              $("#min-hvac-cb").prop("checked",false);
+            $("#max-hvac-cb").prop("checked",true);
+             $("#mid-hvac-cb").prop("checked",false);
+
+
+          }
+      }
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value" ) );
+  });
+
+  </script>
+  <script>
+$(".mode-radio-btn").click(function(){
+    if(($(this).val()) == "manual_mode")
+     {
+       $("#manual-section").css('display','block');
+       $("#automatic-section").css('display','none');
+     }else{
+        $("#manual-section").css('display','none');
+       $("#automatic-section").css('display','block');
+     }
+
+});
+
+  </script>
+
+
+
+    <!-- /#page-content-wrapper -->
+

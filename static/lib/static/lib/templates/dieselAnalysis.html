@@ -1,0 +1,16 @@
+
+
+<ng-include src ="'static/lib/templates/header.html'"></ng-include>
+
+  <ng-include src ="'static/lib/templates/sidebar.html'"></ng-include>
+  <ng-include src ="'static/lib/templates/dieselAnalysis_main.html'"></ng-include>
+
+<script>
+    $("#menu-toggle").click(function(e) {
+       e.preventDefault();
+       $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+
+

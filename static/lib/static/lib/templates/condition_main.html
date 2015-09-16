@@ -1,0 +1,197 @@
+<div id="graphsection">
+    <div class="row " id = "conditioncontoller" style="margin-top:30px;" ng-controller = "ConditionsCtrl" data-ng-init="init()">
+    	
+	<div class="col-md-2">
+            <label>Select Building:</label>
+            <select class="form-control"   id="building_id" ng-model = "config_building"  ng-options= "val for val in getBuilding()" ng-change = "setConfigBuilding(config_building)" >
+                <option value = "">Select</option>
+                <!--<option value = "phase_1">Mindtree Phase 1</option>-->
+            </select>
+        </div>
+    <div class="col-md-2">
+      <label>Select type:</label>
+      <select class="form-control"   id="graph_type" ng-model = "config_func" ng-change = "setConfigFunc(config_func)">
+                  <option value ="">Select</option>
+                  <option value ="T_H">Temp/Humidity Sensor</option>
+		  <option value ="CO2">Carbon_dioxide_Sensor</option>
+                  <option value ="group">Group</option>
+      </select>
+  </div>
+	<div class="col-md-2">
+            <label>Select Floor:</label>
+            <select class="form-control"  id="floor_id" ng-model = "config_floor" ng-options = "val for val in getFloor()|orderBy:'toString()'"  ng-change = "setConfigFloor(config_floor)">
+                        <option value = "">Select</option> 
+            </select>
+        </div>
+
+	<div class="col-md-2">
+            <label>Select wing:</label>
+            <select class="form-control"  id="wing_id"  ng-model = "config_wing" ng-options = "val for val in getWing()" ng-change = "setConfigWing(config_wing)">
+                <option value = "">Select</option>	
+            </select>
+        </div>
+<!--   
+	<div class="col-md-2">
+            <label>Select device:</label>
+            <select class="form-control"  id="buildingMapId" ng-model = "v3"  ng-options = "val for val in somefunc()"  ng-change = "somefunc(v3)" >
+                <option value = "">Select</option>
+            </select>
+        </div> -->
+	<div class="col-md-2">
+	    <label></label>
+	    <button type="button" class="btn btn-success" id="conditions_go_btn" style="display:block;">Submit</button>
+	</div>
+    </div>
+    <div style="margin-top:30px;"></div>
+	<div id="legend-g1" class="hidetemp">
+	</div>
+
+	<div class="panel panel-default hidetemp" style="margin-top:30px;">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="">
+                    Temperatures vs Time 
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <div id="loading-g1" style="display:none;">
+                   <img   style = "margin:10% 40%;" src="/static/lib/img/Fillingbrokenring.gif" alt="loading..."/>
+                </div>
+                <div class="panel-body g1"  id="g1">
+                 <!--<line-chart powerfilename="'data_datefile.csv'"  controllerename="'mindtree/temperature'" temperaturefilename="'temperature.csv'" floor="'1'" types="'sensor'"  sensorid = "'1002'" yaxislabelname="'Temperature'"></line-chart>-->
+                  
+                </div>
+
+             </div>
+       </div>
+
+
+ 	<div id="legend-g2" class="hidehumidity">
+        </div>
+         <div class="panel panel-default hidehumidity" style="margin-top:30px;">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="">
+                    Humidity vs Time
+                  </a>
+                </h4>
+              </div>
+              <div id="collapsetwo" class="panel-collapse collapse in">
+                <div id="loading-g2" style="display:none;">
+                   <img   style = "margin:10% 40%;" src="/static/lib/img/Fillingbrokenring.gif" alt="loading..."/>
+                </div>
+                <div class="panel-body g2"  id="g2">
+<!--                  <line-chart powerfilename="'data_datefile.csv'"  temperaturefilename="'temperature.csv'" controllerename="'mindtree/humidity'" floor="'1'" types="'sensor'"  sensorid = "'1002'"></line-chart>-->
+
+                </div>
+
+              </div>
+            </div>
+
+	<div id="legend-g3" class="hideco2">
+        </div>
+         <div class="panel panel-default hideco2" style="margin-top:30px;">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="">
+                    Carbon Dioxide vs Time
+                  </a>
+                </h4>
+              </div>
+              <div id="collapsetwo" class="panel-collapse collapse in">
+                <div id="loading-g3" style="display:none;">
+                   <img   style = "margin:10% 40%;" src="/static/lib/img/Fillingbrokenring.gif" alt="loading..."/>
+                </div>
+                <div class="panel-body g3"  id="g3">
+                  <line-chart powerfilename="'data_datefile.csv'"  temperaturefilename="'temperature.csv'" controllerename="'mindtree/carbon_dioxide'" floor="'1'" types="'sensor'"  sensorid = "'1002'"></line-chart>
+
+                </div>
+
+              </div>
+            </div>
+
+          
+  <div style="margin-top:30px;">
+               <div  class="panel-collapse collapse in">
+                 <div class="panel-body-test g4"  id="g4">
+<!--                  <line-chart powerfilename="'data_datefile.csv'"  temperaturefilename="'temperature.csv'" controllerename="'mindtree/humidity'" floor="'1'" types="'sensor'"  sensorid = "'1002'"></line-chart>-->
+
+                </div>
+
+              </div>
+            </div>
+
+  
+
+           
+        </div>
+<script>
+	if(screen_width > 1000){
+		$("#graphsection").css("width",(screen_width-80));
+		$("#graphsection").css("margin-left","40px");
+	}else{
+		$("graphsection").addClass("container");
+	}
+/*  $("#floor_id").change(function(){
+   $("#wing_id").val('Select');
+      var floor = $("#floor_id").val();
+      ////alert("floor"+floor);
+      var graph_type = $("#graph_type").val();
+      var data = '<option value = "select">Select</option>';
+      if(graph_type == "group"){
+        $("#wing_id").empty();
+        ////alert("g");
+        data = '<option value = "select">Select</option>'+'<option value="left_ahu">'+"LEFT AHU"+'</option>'+'<option value="right_ahu">'+"RIGHT AHU"+'</option>';
+        $("#wing_id").append(data);
+      }
+      
+      if(graph_type == "sensor"){
+        ////alert("sen");
+        $("#wing_id").empty();
+        data = '<option value = "select">Select</option>';
+        if(floor == "1"){
+          $.each(floor_1_wing,function(index,ele){
+            data += '<option value='+ele+'>'+ele+'</option>';
+          });
+          $("#wing_id").append(data);
+          data = "";
+        }
+
+        if(floor == "2"){
+          $.each(floor_2_wing,function(index,ele){
+            data += '<option value='+ele+'>'+ele+'</option>';
+          });
+          $("#wing_id").append(data);
+          data = "";
+        }
+        if(floor == "3"){
+          $.each(floor_3_wing,function(index,ele){
+            data += '<option value='+ele+'>'+ele+'</option>';
+          });
+          $("#wing_id").append(data);
+          data = "";
+        }
+        if(floor == "4"){
+          $.each(floor_4_wing,function(index,ele){
+            data += '<option value='+ele+'>'+ele+'</option>';
+          });
+          $("#wing_id").append(data);
+          data = "";
+        }
+        if(floor == "lgf"){
+          $.each(floor_lgf_wing,function(index,ele){
+            data += '<option value='+ele+'>'+ele+'</option>';
+          });
+          $("#wing_id").append(data);
+          data = "";
+        }
+      }
+  });
+$("#graph_type").change(function(){
+   $("#floor_id").val('Select');
+   $("#wing_id").val('Select');
+});*/
+</script>
+
+

@@ -1,0 +1,26 @@
+<div style="margin:200px 200px;">
+<form name="smartbuilding_registeration_form" id="registeration_form">
+<label>username</label><input type="text" name="username" id="username"/>
+<label>password</label><input type="text" name="password" id="password"/>
+<button type="button" id="resgister" onclick="smartBuildingsRegisterationForm()">Register</button>
+</form>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+
+function smartBuildingsRegisterationForm(){
+ $.ajax({
+            url:'signup',
+            type:'POST',
+            data:{"username":$("#username").val(),"password":$("#password").val()},
+            success:function(data){
+                console.log("suceess");
+                var scope = angular.element($("body")).scope();
+                scope.$apply(function(){
+                    $rootScope.loggedUser ="login";
+                    $location.path("/login");
+                }); 
+            }
+        });
+}
+</script>

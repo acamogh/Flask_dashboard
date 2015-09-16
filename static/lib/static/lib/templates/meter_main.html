@@ -1,0 +1,157 @@
+<div id="graphsection">
+    <div class="row " id = "metercontoller" style="margin-top:30px;" ng-controller = "ConditionsCtrl">
+	<div class="col-md-2">
+            <label>Select Building:</label>
+            <select class="form-control"   id="meter_building_id" ng-model = "Meter_building">
+                <option value = "">Select</option>
+                <option value = "phase_1">Mindtree Phase 1</option>
+            </select>
+        </div>
+    	<div class="col-md-2">
+      		<label>Select Floor:</label>
+      		<select class="form-control"   id="meter_floor_id" ng-model = "Meter_floor">
+                  	<option value ="">Select</option>
+                        <option value ="ds">Diesel Shed</option>
+                        <option value ="lgf">Lower ground floor</option>
+                        <option value ="gf">Ground floor</option>
+                        <option value ="1f">1F</option>
+                        <option value ="2f">2F</option>
+                        <option value ="3f">3F</option>
+                        <option value ="4f">4F</option>               
+		</select>
+  	</div>
+	<div class="col-md-2">
+            <label>Select wing:</label>
+            <select class="form-control"  id="meter_wing_id"  ng-model = "Meter_wing" ng-options = "val for val in getMeterWing()">
+                <option value = "">Select</option>	
+            </select>
+        </div>
+	<div class="col-md-2">
+	    <label></label>
+	    <button type="button" class="btn btn-success" id="meter_go_btn" style="display:block;">Submit</button>
+	</div>
+    </div>
+    <div style="margin-top:30px;"></div>
+    <div class="panel panel-default hidetemp" style="margin-top:30px;">
+    	<div class="panel-heading">
+        	<h4 class="panel-title">
+                	<a data-toggle="collapse" data-parent="#accordion" href="">Total Active Power vs Time </a>
+                </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+        	<div id="loading-g1" style="display:none;">
+                   <img   style = "margin:10% 40%;" src="/static/lib/img/Fillingbrokenring.gif" alt="loading..."/>
+                </div>
+                <div class="panel-body g1"  id="g1">
+                 <meter-chart powerfilename="'data_datefile.csv'"  controllerename="'mindtree/temperature'" temperaturefilename="'temperature.csv'" floor="'1'" types="'sensor'"  sensorid = "'1002'" yaxislabelname="'Temperature'"></meter-chart>
+                  
+                </div>
+        </div>
+    </div>
+
+<div class="panel panel-default hidetemp" style="margin-top:30px;">
+        <div class="panel-heading">
+                <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="">Day wise Energy Consumption </a>
+                </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+                <div id="loading-g2" style="display:none;">
+                   <img   style = "margin:10% 40%;" src="/static/lib/img/Fillingbrokenring.gif" alt="loading..."/>
+                </div>
+                <div class="panel-body g2"  id="g2">
+                 <bar-graph powerfilename="'data_datefile.csv'"  controllerename="'mindtree/temperature'" temperaturefilename="'temperature.csv'" floor="'1'" types="'sensor'"  sensorid = "'1002'" yaxislabelname="'Temperature'"></bar-graph>
+
+                </div>
+        </div>
+    </div>
+
+          
+  <div style="margin-top:30px;">
+               <div  class="panel-collapse collapse in">
+                 <div class="panel-body-test g4"  id="g4">
+<!--                  <line-chart powerfilename="'data_datefile.csv'"  temperaturefilename="'temperature.csv'" controllerename="'mindtree/humidity'" floor="'1'" types="'sensor'"  sensorid = "'1002'"></line-chart>-->
+
+                </div>
+
+              </div>
+            </div>
+
+  
+
+           
+        </div>
+<script>
+	if(screen_width > 1000){
+		$("#graphsection").css("width",(screen_width-80));
+		$("#graphsection").css("margin-left","40px");
+	}else{
+		$("graphsection").addClass("container");
+	}
+	$("#meter_floor_id").change(function(){
+		var opt = '<option value = "">Select</option>';
+		if($("#meter_floor_id").val() == "ds"){
+			var myarr = ["EB_ACOP1","EB_ATS1","EB_ATS2","EB_ACOP2","500KVA DG1","500KVA DG2","500KVA DG3","250KVA DG4"];
+			for(var i=0;i<myarr.length;i++){
+				opt +='<option value = '+i+'>'+myarr[i]+'</option>';
+			}
+			$("#meter_wing_id").empty();
+			$("#meter_wing_id").append(opt);
+		}
+		if($("#meter_floor_id").val() == "lgf"){
+                        var myarr = ["left_wing_MLPB","left_wing_AHU_panel","right_wing_MLPA","right_wing_AHU_panel"];
+                        for(var i=0;i<myarr.length;i++){
+                                opt +='<option value = '+i+'>'+myarr[i]+'</option>';
+                        }
+                        $("#meter_wing_id").empty();
+                        $("#meter_wing_id").append(opt);
+                }
+		if($("#meter_floor_id").val() == "gf"){
+                        var myarr = ["left_wing_AHU_panel","right_wing_AHU_panel"];
+                        for(var i=0;i<myarr.length;i++){
+                                opt +='<option value = '+i+'>'+myarr[i]+'</option>';
+                        }
+                        $("#meter_wing_id").empty();
+                        $("#meter_wing_id").append(opt);
+                }
+		if($("#meter_floor_id").val() == "1f"){
+                        var myarr = ["left_wing_AHU_panel","right_wing_server_room","right_wing_AHU_panel"];
+                        for(var i=0;i<myarr.length;i++){
+                                opt +='<option value = '+i+'>'+myarr[i]+'</option>';
+                        }
+                        $("#meter_wing_id").empty();
+                        $("#meter_wing_id").append(opt);
+                }
+		if($("#meter_floor_id").val() == "2f"){
+                        var myarr = ["left_wing_AHU_panel","right_wing_AHU_panel"];
+                        for(var i=0;i<myarr.length;i++){
+                                opt +='<option value = '+i+'>'+myarr[i]+'</option>';
+                        }
+                        $("#meter_wing_id").empty();
+                        $("#meter_wing_id").append(opt);
+                }
+		if($("#meter_floor_id").val() == "3f"){
+                        var myarr = ["right_wing_switch_room","left_wing_AHU_panel","right_wing_AHU_panel"];
+                        for(var i=0;i<myarr.length;i++){
+                                opt +='<option value = '+i+'>'+myarr[i]+'</option>';
+                        }
+                        $("#meter_wing_id").empty();
+                        $("#meter_wing_id").append(opt);
+                }
+		if($("#meter_floor_id").val() == "4f"){
+                        var myarr = ["right_wing_studio","right_wing_switch_room","right_wing_AHU_panel","left_wing_AHU_panel"];
+                        for(var i=0;i<myarr.length;i++){
+                                opt +='<option value = '+i+'>'+myarr[i]+'</option>';
+                        }
+                        $("#meter_wing_id").empty();
+                        $("#meter_wing_id").append(opt);
+                }
+
+
+
+
+	});
+	
+</script>
+
+

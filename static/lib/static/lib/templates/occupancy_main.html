@@ -1,0 +1,122 @@
+
+
+        <div id="graphsection">
+              <!-- <div class="row" style="margin-top:40px;">
+              
+                <div  id="menu-toggle-occupancy" ng-click ="sidebar_toggle()">
+                 <span class="cstmspan"></span>
+                 <span class="whtecstmspan"></span>
+                 <span class="cstmspan"></span>
+                 <span class="whtecstmspan"></span>
+                 <span class="cstmspan"></span>
+                 </div>
+              </div> -->
+            <!--  <div class="row " style="margin-top:30px;">
+              <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    <label>Select Building:</label>
+                    <select  class="form-control select-menu"  id="buildingMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+                      <option>Select</option>
+                      <option>Nascom</option>
+                      
+                   </select>
+                </div>
+                <div class="col-md-2">
+                  <label>Select Fllor</label>
+                  <select class="form-control"  id="floorMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+                    <option>Select</option>   
+                    <option>3rfd floor/option>   
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label>Select wing</label>
+                  <select class="form-control"   ng-click = "hardocdedclearMappingOnWing()" id="wingMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+                    <option>Select</option>
+                    <option>movable</option>
+                  </select>
+                </div>
+                 <div class="col-md-3"></div>
+            </div>
+            <div style="margin-top:30px;"></div>
+            <button type="button" class="btn btn-info" id="occupancy_go_btn" style="display:block;margin:0 auto;">go</button> -->
+            
+            
+            <!-- <div class="panel panel-default" style="margin-top:30px;">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                    Occupancy Vs Time
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <div id="loading-g1" style="display:none;">
+                   <img   style = "margin:10% 40%;" src="/static/lib/img/Fillingbrokenring.gif" alt="loading..."/>
+                </div>
+                <div class="panel-body g1"  id="g1">
+                 <line-chart powerfilename="'data_datefile.csv'"  temperaturefilename="'temperature.csv'"></line-chart>
+                  
+                </div>
+
+              </div>
+            </div>
+ -->
+            <div class="panel panel-default" style="margin-top:30px;">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="">
+                    Occupancy Trend
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <div id="loading-g1">
+                  
+                </div>
+                <div class="panel-body g1"  id="g1">
+                  <lightplotocc-graph controllerename="'getOccupancy_Time'"  yaxislabelname="'Occupancy'"  xaxislabelname= "''" classname="'g2'"></lightplotocc-graph>
+                  
+                </div>
+
+              </div>
+            </div>
+
+
+
+        
+              <!-- Button trigger modal -->
+<!-- <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+           
+        </div>
+
+<script>
+	if(screen_width > 1000){
+		$("#graphsection").css("width",(screen_width-80));
+		$("#graphsection").css("margin-left","40px");
+	}else{
+		$("graphsection").addClass("container");
+	}
+</script>
+
+

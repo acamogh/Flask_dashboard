@@ -1,0 +1,95 @@
+             <!-- Page Content -->
+ <style>
+
+ .axis {
+   font: 10px sans-serif;
+ }
+
+ .axis path,
+ .axis line {
+   fill: none;
+   stroke: #000;
+   shape-rendering: crispEdges;
+ }
+
+ </style>
+
+
+  <div id="graphsection">
+
+<div class="row" style="margin-top:20px;">
+<div class="col-md-1"></div>
+	<div class="col-md-4" style="margin-top:3px;margin-left:3px;">
+		 <label style="font-size:12px;font-famly:arial;"><input type="radio" style="margin-left:10px;" name="mode-selection" id="overall-mode" value="overall_mode" class="mode-radio-btn1" checked> Overall </label>
+		 <label style="font-size:12px;font-famly:arial;"><input type="radio" style="margin-left:10px;" name="mode-selection" id="ind-mode" value="ind_mode" class="mode-radio-btn1"> Individually </label>
+
+
+
+	</div>
+<div id="map_section" style="display:none;">
+        <div class="col-md-2">
+            <label>Select Building:</label>
+            <select  class="form-control select-menu" ng-model="buildingselectedValue" ng-options="val for val in getBuildingMapData()" ng-change="clearMappingOnBuilding(buildingselectedValue)" id="buildingMapId"  style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">Select</option>                
+            </select>
+        </div>                
+        <div class="col-md-2">
+            <label>Select Floor</label>
+            <select class="form-control" ng-model="floorselectedValue"  ng-options="val for val in gethardcodedFloorMapData()" ng-change="clearMappingOnFloor(floorselectedValue)" id="floorMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">Select</option>      
+            </select>
+        </div>
+         <div class="col-md-2">
+            <label>Select Lab</label>
+            <select class="form-control" ng-model="labselectedValue"  ng-options="val for val in gethardcodedlabMapData()"  style="border-color:#6eb344;background-color:#f3f3f3;">
+              <option value="">Select</option>      
+            </select>
+        </div>
+</div>
+</div> 
+
+      <div style="margin-top:70px;"></div>
+    
+
+	         <div class="panel panel-default" style="margin-top:30px;">
+           <div class="panel-heading">
+             <h4 class="panel-title">
+               <a data-toggle="collapse" data-parent="#accordion" href="">
+                Compliance with  ASHRAE TC 9.9
+               </a>
+             </h4>
+           </div>
+           <div id="collapseOne" class="panel-collapse collapse in">             
+             <div id="loading-g0">
+               
+             </div>
+             <div class="panel-body g0"  id="g0">
+              <lineplot-graph controllerename="'getashrae'"  yaxislabelname="'Moisture Content,g/Kg dry air'"  xaxislabelname= "'C'" classname="'g2'"></lineplot-graph>                  
+             </div>
+           </div>
+      </div> 
+ 
+</div>
+ <script>
+if(screen_width > 1000){
+	$("#graphsection").css("width",(screen_width-80));
+	$("#graphsection").css("margin-left","40px");
+
+}else{
+	$("#graphsection").addClass("container");
+}
+
+</script>
+<script>
+$(".mode-radio-btn1").click(function(){
+	
+	if(($(this).val()) == "ind_mode"){
+//		alert("matched_ind");
+		$("#map_section").css("display","block");
+	}else{
+//		alert("not matched");
+		$("#map_section").css("display","none");
+	}
+});
+</script>
+

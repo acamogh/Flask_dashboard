@@ -1,0 +1,110 @@
+<!-- Page Content -->
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+      <div class="row" style="margin-top:40px;">
+          <!--  <button type="button" class="btn btn-info"  id="menu-toggle">Toggle Menu</button> -->
+          <div class = "col-md-6" id="menu-toggle" ng-click ="sidebar_toggle()">
+            <span class="cstmspan"></span>
+            <span class="whtecstmspan"></span>
+            <span class="cstmspan"></span>
+            <span class="whtecstmspan"></span>
+            <span class="cstmspan"></span>
+          </div>
+          <div class = "col-md-6" style="margin-left:80%;">
+            <img src="/static/lib/img/mindtree.png">
+          </div>
+      </div>
+      <div class="row " style="margin-top:30px;">
+        <div class="col-md-4">
+            <label>Select Building:</label>
+            <select  class="form-control select-menu" ng-model="buildingselectedValue" ng-options="val for val in getBuildingMapData()" ng-change="clearMappingOnBuilding(buildingselectedValue)" id="buildingMapId" >
+              <option value="">Select</option>                
+            </select>
+        </div>                
+        <div class="col-md-4">
+            <label>Select Fllor</label>
+            <select class="form-control" ng-model="floorselectedValue"  ng-options="val for val in getFloorMapData()" ng-change="clearMappingOnFloor(floorselectedValue)" id="floorMapId">
+              <option value="">Select</option>      
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label>Select wing</label>
+            <select class="form-control" ng-model="wingselectedValue" ng-change = "clearMappingOnWing(wingselectedValue)" ng-options = "val for val in getWingMapData()" id="wingMapId">
+              <option value="">Select</option>
+            </select>
+        </div>
+      </div>
+      <div style="margin-top:30px;"></div>
+      <button type="button" class="btn btn-info" id="analysis_go_btn" style="display:block;margin:0 auto;">go</button>
+      <a href="#" class="tooltip_marker"></a>            
+      <div class="panel panel-default" style="margin-top:30px;">
+           <div class="panel-heading">
+             <h4 class="panel-title">
+               <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                 Total active Power Vs occupancy
+               </a>
+             </h4>
+           </div>
+           <div id="collapseOne" class="panel-collapse collapse in">             
+             <div id="loading-g1" style="display:none">
+               <img   style = "margin:10% 40%;" src="/static/lib/img/Fillingbrokenring.gif" alt="loading..."/>
+             </div>
+             <div class="panel-body g1"  id="g1">
+              <line-graph powerfilename="'data_datefile.csv'"  temperaturefilename="'temperature.csv'"></line-graph>                  
+             </div>
+           </div>
+      </div>
+
+
+      <div class="panel panel-default" style="margin-top:30px;">
+           <div class="panel-heading">
+             <h4 class="panel-title">
+               <a data-toggle="collapse" data-parent="#accordion" href="#collapsetwo">
+                 total cost Vs Time
+               </a>
+             </h4>
+           </div>
+           <div id="collapsetwo" class="panel-collapse collapse in">                
+             <div id="loading-g2" style="display:none">
+               <img   style = "margin:10% 40%;" src="/static/lib/img/Fillingbrokenring.gif" alt="loading..."/>
+             </div>
+             <div id="g2" class="panel-body g1">
+               <line-graph powerfilename="'data_datefile.csv'" temperaturefilename="'temperature.csv'"></line-graph> 
+             </div>
+           </div>
+      </div>
+
+
+     
+      <!-- Button trigger modal -->
+      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+          Launch demo modal
+      </button>
+      <button type="button" id="compresstestbtn">compresstest</button>
+
+      <!-- Modal -->
+    <!--   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+      </div>        --> 
+
+      <div style="background-color:red;">
+      </div>   
+  </div>
+</div>
+
+    <!-- /#page-content-wrapper -->
+

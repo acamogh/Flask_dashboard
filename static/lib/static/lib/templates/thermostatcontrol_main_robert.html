@@ -1,0 +1,231 @@
+    <!-- Page Content -->
+
+
+        <div id="graphsection">
+             <!--  <div class="row" style="margin-top:40px;">
+             
+                <div  id="menu-toggle-codition" ng-click ="sidebar_toggle()">
+                 <span class="cstmspan"></span>
+                 <span class="whtecstmspan"></span>
+                 <span class="cstmspan"></span>
+                 <span class="whtecstmspan"></span>
+                 <span class="cstmspan"></span>
+                 </div>
+              </div> -->
+		
+	      <div class="row " style="margin-top:30px;">
+              <div class="col-md-2">
+	      	<label>Select Company:</label>
+		<select class="form-control"   style="border-color:#6eb344;background-color:#f3f3f3;"  >
+                	<option>Select</option> 
+		  	<option selected >Bosch</option>
+		</select>
+	      </div>
+	      <div class="col-md-2">
+                <label>Select Building:</label>
+                <select class="form-control"   style="border-color:#6eb344;background-color:#f3f3f3;">
+                        <option>Select</option>
+			<option selected>Bosch</option>
+                </select>
+              </div>
+
+	      <div class="col-md-2">
+                <label>Select Floor:</label>
+                <select class="form-control"  style="border-color:#6eb344;background-color:#f3f3f3;" >
+                        <option>Select</option> 
+			<option selected>Movable</option>
+                </select>
+              </div>
+
+	     <div class="col-md-2" id="wingsel">
+                <label>Select wing:</label>
+                <select class="form-control"     style="border-color:#6eb344;background-color:#f3f3f3;" >
+                        <option value = "">Select</option>
+			<option selected>Movable</option>
+			
+                </select>
+              </div>
+
+		<div class="col-md-2">
+                <label>Select device:</label>
+                <select class="form-control sensors_id"  id="buildingMapId"  style="border-color:#6eb344;background-color:#f3f3f3;" >
+                        <option value = "">Select</option>
+			<option>ff10</option>
+			<option>ff11</option>
+                </select>
+              </div>
+
+
+            <!--  <div class="col-md-2">
+               	<label>Select sensors:</label>
+                <select  class="form-control select-menu sensors_id"  id="buildingMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+          		<option>Select</option>
+                     	 <option>ff00</option>
+			<option>ff01</option>
+          		<option>ee00</option>	
+
+			<option>ee01</option>	
+	         </select>
+	      </div> -->
+<div class="col-md-2">
+					 <label></label>
+<button type="button" class="btn btn-success" id="conditions_go_btn" style="display:block;margin:0;margin-top:10px; auto;">Submit</button>
+</div>
+        	 		<!--	<div class="col-md-2">
+						 <button type="button" class="btn btn-info" id="conditions_go_btn" style="display:block;margin:0 auto;">Submit</button>
+
+        	 				<label>Select Fllor</label>
+        					<select class="form-control"  id="floorMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+        	 					<option>Select</option>   
+                    <option>3rd floor</option>   
+        					</select>
+        				</div>
+        	 			<div class="col-md-2">
+        	 				<label>Select wing</label>
+        					<select class="form-control"   ng-click = "hardocdedclearMappingOnWing()" id="wingMapId" style="border-color:#6eb344;background-color:#f3f3f3;">
+        						<option>Select</option>
+                    <option>movable</option>
+        					</select>
+        				</div>-->
+                 <div class="col-md-3"></div>
+            </div>
+            <div style="margin-top:30px;"></div>
+<!--            <button type="button" class="btn btn-info" id="conditions_go_btn" style="display:block;margin:0 auto;">Submit</button>-->
+          
+
+
+ 
+            <div class="panel panel-default hidetemp" id="rtemp" style="margin-top:30px;">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="">
+                    Temperature Vs Time
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <div id="loading-g1" style="display:none;">
+                   <img   style = "margin:10% 40%;" src="/static/lib/img/Fillingbrokenring.gif" alt="loading..."/>
+                </div>
+                <div class="panel-body g1"  id="g1">
+                 <line-chart powerfilename="'data_datefile.csv'"  temperaturefilename="'temperature.csv'"></line-chart>
+                  
+                </div>
+
+              </div>
+            </div>
+
+
+
+ 
+            
+           
+             <div class="panel panel-default hidehumidity" id="hum" style="margin-top:30px;">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="">
+                   Humidity Vs Time
+                  </a>
+                </h4>
+              </div>
+              <div id="collapsetwo" class="panel-collapse collapse in">
+                <div id="loading-g2" style="display:none;">
+                   <img   style = "margin:10% 40%;" src="/static/lib/img/Fillingbrokenring.gif" alt="loading..."/>
+                </div>
+                 <div id="g2" class="panel-body g1">
+<line-chart powerfilename="'data_datefile.csv'" temperaturefilename="'temperature.csv'"></line-chart> 
+ 
+</div>
+              </div>
+            </div>
+         
+ <div class="panel panel-default " id="amb" style="margin-top:30px;">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="">
+                    Ambient Light Vs Time
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <div id="loading-g3" style="display:none;">
+                   <img   style = "margin:10% 40%;" src="/static/lib/img/Fillingbrokenring.gif" alt="loading..."/>
+                </div>
+                <div class="panel-body g1"  id="g3">
+                 <line-chart powerfilename="'data_datefile.csv'"  temperaturefilename="'temperature.csv'"></line-chart>
+                  
+                </div>
+
+              </div>
+            </div>
+
+
+
+<div class="panel panel-default" id="rad"  style="margin-top:30px;">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="">
+                    Radiant Heat Vs Time
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <div id="loading-g4" style="display:none;">
+                   <img   style = "margin:10% 40%;" src="/static/lib/img/Fillingbrokenring.gif" alt="loading..."/>
+                </div>
+                <div class="panel-body g1"  id="g4">
+                 <line-chart powerfilename="'data_datefile.csv'"  temperaturefilename="'temperature.csv'"></line-chart>
+
+                </div>
+
+              </div>
+            </div>
+
+
+
+
+
+    <!-- Button trigger modal -->
+<!--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>-->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+           
+        </div>
+ 
+<script>
+    $("#menu-toggle").click(function(e) {
+       e.preventDefault();
+       $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+<script>
+	if(screen_width > 1000){
+		$("#graphsection").css("width",(screen_width-80));
+		$("#graphsection").css("margin-left","40px");
+	}else{
+		$("graphsection").addClass("container");
+	}
+//$("#robert_conditions_go_btn").on("click", robert_condition_reset)
+</script>
+
+

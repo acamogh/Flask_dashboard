@@ -1,0 +1,27 @@
+<ng-include src ="'static/lib/templates/header.html'"></ng-include>
+
+  <ng-include src ="'static/lib/templates/sidebar.html'"></ng-include>
+<ng-include src= "'static/lib/templates/thermostatcontrol_main.html'"></ng-include>
+<!--<ng-include ng-if="checkname()"   src ="'static/lib/templates/thermostatcontrol_main.html'"></ng-include>
+ <ng-include ng-if="checkname2()"   src ="'static/lib/templates/thermostatcontrol_main_robert.html'"></ng-include>-->
+<!--
+<script>
+    $("#menu-toggle").click(function(e) {
+       e.preventDefault();
+       $("#wrapper").toggleClass("toggled");
+    });
+
+    $("#compresstestbtn").click(function(e){
+         e.preventDefault();
+         $.ajax({
+            url:'compresstest',
+            type:'GET',
+            headers: { 'Accept-Encoding' : 'gzip' },
+            success:function(data){
+              alert("zipped data is");
+              console.log(data);
+            }
+         });
+    });
+</script>
+-->
